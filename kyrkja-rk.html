@@ -1,0 +1,1655 @@
+<div class="columnContent clearfix">
+       
+            <div class="userHeader" style="background:url('https://static-web.runkeeper.com/build/14793/static/kronos/images/icon-walking.png') no-repeat 20px center; background-size:40px 40px;">
+                <div id="activityActions">
+                  <div class="activityActionItem">
+                    
+                    <span id="activityOptions">
+                      <button id="" class="component ctaButton disabled medium" type="button">
+                        <div class="buttonText">
+                           <img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/down_arrow.png"> 
+                        </div>
+                     </button>
+                    </span>
+                    
+                    <ul id="activityOptionsList" style="display: none;">
+                      <a href="/edit/activity?tripId=1044449793"><li class="micro-text">
+                          Edit Activity
+                      </li></a>
+                      
+                        <li class="micro-text" id="fbfeedButton">Share to Facebook</li>
+                        <li class="micro-text" id="tweetButton">Share to Twitter</li>
+                      
+                      
+                      <a alertmessage="Are you sure you want to delete this activity? This cannot be undone..." href="/delete/activity?activityId=1044449793" alerttitle="Delete Activity?"><li class="micro-text">
+                          Delete Activity
+                      </li></a>
+                    </ul>
+                    <script type="text/javascript">
+                      $('#activityOptions button').click(function(event){
+                        event.stopPropagation();
+                        if($(this).hasClass('pressed')){
+                          $('#activityOptionsList').hide();
+                          $(this).removeClass('pressed');
+                        } else {
+                          $(this).addClass('pressed');
+                          event.stopPropagation();
+                          $('#activityOptionsList').show();
+                        }
+                      });
+                      $(document).click(function(event){
+                        if($('#activityOptionsList').is(event.target) || $('#activityOptionsList li').is(event.target) || $('#activityOptionsList li a').is(event.target) || $('#activityOptionsList li .pesudoLink').is(event.target)){
+                        } else {
+                          $('#activityOptionsList').hide();
+                          $('#activityOptions button').removeClass('pressed');
+                        }
+                      });
+                    </script>
+                  </div>
+                  
+                  <div class="activityActionItem">
+                    
+                      
+                      
+                         <div class="icon friends" data-toggle="tooltip" data-container="body" title="Friends Only"></div>
+                      
+                    
+                  </div>
+                  
+                </div>
+
+                <h2>Monday walk</h2>
+                <div class="micro-text activitySubTitle">Aug 28, 2017&nbsp;&nbsp;-&nbsp;&nbsp;10:32 AM</div>
+             </div>
+             
+             
+             
+                
+             
+             
+             
+
+            
+            <script type="text/javascript">
+                var activityInfoCallbacks = [];
+            </script>
+
+            
+               
+               
+                  <div class="row-fluid statsBar">
+                    <div id="totalDistance" class="span3 statsItem">
+                        <h5>km</h5>
+                        <h1><span class="value">4.27</span></h1>
+                    </div>
+                    <div id="totalDuration" class="span3 statsItem">
+                        <h5>Duration</h5>
+                        <h1><span class="value">2:06:27</span></h1>
+                    </div>
+                    
+                      
+                      
+                        <div id="averagePace" class="span3 statsItem">
+                            <h5>Average Pace</h5>
+                            <h1><span class="value">29:36</span>
+                            </h1>
+                        </div>
+                      
+                    
+                    <div id="totalCalories" class="span3 statsItem">
+                      <h5>Calories Burned</h5>
+                      <h1><span class="value">583</span></h1>
+                    </div>
+                  </div>
+                  
+	
+		<script type="text/javascript">
+			var isLive = false;
+			
+			activityInfoCallbacks
+					.push(function(activityInfo) {
+						if (activityInfo == null) {
+							removePhotosSection();
+							return;
+						}
+
+						var init = false;
+						if (!mapController.model.map) {
+							// map doesn't exist yet, create
+							init = true;
+							var options = {
+								mapStyle : 'runkeeper.4nc7syvi'
+							};
+
+							mapController
+									.initialize({
+										'mapDiv' : 'map_canvas',
+										'snapToRoads' : false,
+										'editMode' : false,
+										'points' : activityInfo.points,
+										'distanceUnits' : 'km',
+										'isLive' : isLive
+									});
+						} else {
+							var bounds = mapController.model.map.getBounds();
+							// otherwise, just pass in new points
+							mapController.mapSetup({
+								'points' : activityInfo.points,
+								'bounds' : bounds
+							});
+						}
+
+						if (activityInfo.routePoints) {
+							mapController.drawRouteLine(JSON
+									.parse(activityInfo.routePoints));
+						}
+
+						if (activityInfo.racePoints) {
+							mapController.drawRaceLine(JSON
+									.parse(activityInfo.racePoints));
+						}
+
+						if (activityInfo.statusUpdates) {
+							mapController.model.statusUpdates = activityInfo.statusUpdates;
+							mapController.overlayStatusUpdates();
+							refreshPhotoViewer(activityInfo.statusUpdates);
+
+							if (activityInfo.statusUpdates.length == 0) {
+								removePhotosSection();
+								return;
+							}
+
+							carouselItemList.forEach(function(status) {
+								var ul = $('#images');
+								var li = ul.append($('<li>'
+										+ carousel_getItemHtml(status)
+										+ '</li>'));
+							});
+						} else {
+							removePhotosSection();
+						}
+					});
+
+			function removePhotosSection() {
+				var div = $('#imagesHolder');
+				div.empty();
+				div.remove();
+			}
+		</script>
+	
+
+	<div id="map_area">
+		<div id="mapping_tool">
+			
+	
+
+	
+	
+	
+		
+		
+			
+		
+	
+
+	
+	
+		
+	
+	
+
+	
+	
+		
+	
+
+   <script type="text/javascript">
+      _gaq.push(['_trackEvent', 'Maps Usage', 'Logged In - Runkeeper Go', '/jsp/user/cardio-activities.jsp', 1]);
+
+      function logDirectionsCall()
+      {
+          _gaq.push(['_trackEvent', 'Directions API Usage', 'Logged In - Runkeeper Go', '/jsp/user/cardio-activities.jsp', 1]);
+      }
+   </script>
+
+	<link href="//api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.css" rel="stylesheet">
+	<!--[if lte IE 8]>
+		<link href='//api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.ie.css' rel='stylesheet' />
+	<![endif]-->
+	<script src="//api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.js"></script>
+	<script src="https://static-web.runkeeper.com/build/14793/static/oceanus/js/maps/polyline.js"></script>
+	<script src="https://static-web.runkeeper.com/build/14793/static/oceanus/js/maps/geocoder.js"></script>
+
+	<script src="https://static-web.runkeeper.com/build/14793/static/oceanus/js/plugins/Leaflet.fullscreen.js"></script>
+	<link href="https://static-web.runkeeper.com/build/14793/static/oceanus/css/plugins/leaflet.fullscreen.css" rel="stylesheet">
+
+	<script src="https://static-web.runkeeper.com/build/14793/static/oceanus/js/maps/map.js"></script>
+
+	
+		<script type="text/javascript" src="https://static-web.runkeeper.com/build/14793/static/oceanus/js/maps/photos.js"></script>
+		<script>
+			function initPrettyPhotoTriggers(jqSelectorStr, showTitle, allowresize)
+			{
+				$(jqSelectorStr).fancybox({
+					padding : 10,
+					cyclic : true,
+					autoDimensions : true,
+					closeClick : true,
+					overlayOpacity : 0.6,
+					beforeShow : function()
+					{
+						// delete photo button
+						this.title = '<a href="javascript:void(0)" ' + 
+						'id="deleteStatusUpdateLink" ' +
+						'class="deleteStatusUpdate" ' +
+						'photoKey="' + this.title + '" ' +
+						'alertMessage="Are you sure you want to remove this photo?" ' +
+						'alertTitle="Remove Photo">Remove</a>';
+
+						// don't show it if you don't own the photo
+						
+
+					},
+					afterShow: function()
+					{
+						// set up the alert for the delete
+						$('.deleteStatusUpdate#deleteStatusUpdateLink').click(function(event){
+
+							var photoKey = $('.deleteStatusUpdate#deleteStatusUpdateLink').attr('photoKey');
+							var url = '/delete/statusUpdate/';
+							var alertMessage = $('.deleteStatusUpdate#deleteStatusUpdateLink').attr('alertMessage');
+							var alertTitle = $('.deleteStatusUpdate#deleteStatusUpdateLink').attr('alertTitle');
+							event.preventDefault();
+
+							jAlert(
+								alertMessage,
+								alertTitle,
+								function(result){
+									if (result)
+									{
+										$.ajax(
+											{
+												url: url,
+												dataType: "json",
+												type: "POST",
+												data: {
+													photoKey: photoKey,
+												},
+												success:function(data){
+													window.location = window.location.href.split("?")[0];
+												},
+												error: function(){
+												}
+											}
+										);
+									}                          
+								},
+								'Remove',
+								'Cancel'
+							);
+						});
+					},
+					helpers : 
+					{
+						title :
+						{
+							type : 'float'
+						}
+					}
+				});
+			}
+		</script>
+	
+
+	
+	<script>
+		$(document).on('ready',function(){
+			$("#snapToRoadsControl").on('click touchstart',function() {
+				$(this).toggleClass('selected');
+				mapController.model.snapToRoads =  $(this).hasClass("selected");
+			});
+
+			$("#undoControl").on('click touchstart',mapController.undo);
+			$("#resetControl").on('click touchstart',function(){
+				if(mapController.hasActivityData())
+				{
+					jAlert(
+						'Are you sure? This cannot be undone.',
+						'Clear Map',
+						function(result){
+							if(result)
+							{
+								mapController.reset();
+							}
+						},
+						'Clear',
+						'Cancel'
+					);
+				}
+			});
+
+			var locationSearchBarInput = $('#locationSearchBarInput');
+			locationSearchBarInput.on('focus',function(){
+				$('#editControlsContainer').addClass('textInputActive');
+			});
+			locationSearchBarInput.on('blur',function(){
+				$('#editControlsContainer').removeClass('textInputActive');
+			});
+			locationSearchBarInput.on('keypress',function(event) {
+				var code = (event.keyCode ? event.keyCode : event.which);
+				if (code == 13) {
+					if((typeof(locationSearchBarInput.data('selectedBounds')) === 'undefined' || locationSearchBarInput.data('selectedBounds') === null) && (typeof(locationSearchBarInput.data('selectedLocation')) === 'undefined' || locationSearchBarInput.data('selectedLocation') === null))
+					{
+						mapController.searchForLocation(
+							{'term':locationSearchBarInput.val()},
+							function(resultMap){
+								locationSearchBarInput.data('selectedBounds', resultMap[0].bounds);
+								locationSearchBarInput.data('selectedLocation', resultMap[0].location);
+								goToSearchLocation();
+							}
+						);
+					}
+					else
+					{
+						goToSearchLocation();
+					}
+					event.preventDefault();
+					event.stopPropagation();
+				}
+			});
+			var locationSearchGo = $('#locationSearchButton');
+			locationSearchBarInput.autocomplete({
+				'source': mapController.searchForLocation,
+				'delay': 300,
+				'minLength': 2,
+				'response': function(e,ui)
+				{
+					if(ui.content.length > 0 && typeof(ui.content[0]) != 'undefined')
+					{
+						locationSearchBarInput.data('selectedBounds', ui.content[0].bounds);
+						locationSearchBarInput.data('selectedLocation', ui.content[0].location);
+					}
+				},
+				'select': function(e, ui) 
+				{
+					locationSearchBarInput.data('selectedBounds', ui.item.bounds);
+					locationSearchBarInput.data('selectedLocation', ui.item.location);
+					goToSearchLocation();
+				}
+			});
+			locationSearchGo.click(goToSearchLocation);
+			function goToSearchLocation()
+			{
+				var bounds = locationSearchBarInput.data('selectedBounds');
+				var selectedLocation = locationSearchBarInput.data('selectedLocation');
+				if (bounds) {
+					mapController.model.map.fitBounds(bounds);
+				} 
+				else if (selectedLocation)
+				{
+					mapController.model.map.setView(selectedLocation,15);
+				}
+				else
+				{
+					if (navigator.geolocation)
+					{
+						navigator.geolocation.getCurrentPosition(showPosition);
+						function showPosition(position)
+						{
+							mapController.model.map.setView(new L.latLng(position.coords.latitude,position.coords.longitude),15);
+						}
+					}
+				}
+
+				locationSearchBarInput.data('selectedBounds', null);
+				locationSearchBarInput.data('selectedLocation', null);
+			}
+
+			$('#editControlsContainer').on('click dblclick',function(e){
+				// block any clicks to map
+				e.stopPropagation();
+			});
+
+			$('.mapStyleOption').on('click',function(){
+				if(!$('#mapStyleChooser').hasClass('allOptions'))
+				{
+					$('#mapStyleChooser').addClass('allOptions');
+				}
+				else
+				{
+					if($(this).attr('id') === 'spacer' || $(this).hasClass('selected'))
+					{
+						// return, do nothing
+					}
+					else
+					{
+						$('.mapStyleOption').removeClass('selected');
+						var something = $('.leaflet-control-layers-base input[type="radio"]');
+						$('.leaflet-control-layers-base input[type="radio"]').get($(this).attr('data-mapStyle')).click();
+
+						$(this).addClass('selected');
+					}
+					$('#mapStyleChooser').removeClass('allOptions');
+				}
+			});
+		});
+	</script>
+
+	<div id="map_canvas" class="leaflet-container leaflet-touch leaflet-fade-anim" tabindex="0" style="position: relative;">
+
+		<div id="map-loading" style="display: none;">
+			<div id="gifTable">
+			    <div id="gifCell">
+					<img id="gif" src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/runner.gif" alt="Runner Loading">
+				</div>
+			</div>
+	    </div>
+
+		
+		
+			
+				<div id="editControlsContainer" class="mapboxTrue simpleControls">
+					<div id="newControlsContainer">
+						<div class="mapControlButton rightBorder" id="mapStyleChooser">
+							<div id="mapStyleOptions" title="Map Style">
+								<div class="mapStyleOption spacer" id="spacer" title="Cancel">X</div>
+								<div class="mapStyleOption" id="street" title="Street View" data-mapstyle="0"></div>
+								<div class="mapStyleOption selected" id="terrain" title="Terrain View" data-mapstyle="1"></div>
+								<div class="mapStyleOption" id="satellite" title="Satellite View" data-mapstyle="2"></div>
+							</div>
+						</div>
+						<a id="helpMe" href="/osm" title="Help" class="mapControlButton leftBorder">?</a>
+					</div>
+				</div>
+			
+			
+		
+		
+
+		
+	<div class="leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-tile-pane"><div class="leaflet-layer"><div class="leaflet-tile-container"></div><div class="leaflet-tile-container leaflet-zoom-animated"><img class="leaflet-tile leaflet-tile-loaded" src="https://a.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8568/4614.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 262px; top: 122px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://b.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8567/4614.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 6px; top: 122px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://b.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8568/4613.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 262px; top: -134px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://a.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8567/4613.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 6px; top: -134px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://a.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8567/4615.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 6px; top: 378px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://b.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8568/4615.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 262px; top: 378px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://a.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8566/4614.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: -250px; top: 122px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://b.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8569/4614.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 518px; top: 122px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://b.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8566/4615.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: -250px; top: 378px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://b.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8566/4613.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: -250px; top: -134px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://a.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8569/4613.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 518px; top: -134px;"><img class="leaflet-tile leaflet-tile-loaded" src="https://a.tiles.mapbox.com/v4/runkeeper.4nc7syvi/14/8569/4615.png?access_token=pk.eyJ1IjoicnVua2VlcGVyIiwiYSI6ImNmT0l4VzQifQ.mJu3GXkgObOnAoUpXa1Q3g" style="height: 256px; width: 256px; left: 518px; top: 378px;"></div></div></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"></div><div class="leaflet-overlay-pane"><svg class="leaflet-zoom-animated" width="875" height="500" viewBox="-88 -50 875 500" style="transform: translate3d(-88px, -50px, 0px);"><g><path stroke-linejoin="round" stroke-linecap="round" stroke="#ff0000" stroke-opacity="0.5" stroke-width="5" fill="none" class="leaflet-clickable" d="M82 37L92 69L91 89L97 98L99 108L100 110L110 115L120 123L126 137L133 144L139 153L142 163L141 169L135 181L126 187L124 191L128 201L135 205L141 214L145 216L150 232L150 240L156 253L164 255L171 259L173 262L177 262L182 266L178 276L185 283L191 294L200 303L199 309L206 320L208 326L211 329L213 328L223 338L245 349L248 354L252 357L260 359L264 364L270 361L279 362L291 360L293 358L298 359L300 357L306 356L312 350L316 354L320 352L320 354L322 355L330 354L341 357L358 349L365 353L367 351L375 349L379 345L384 349L396 349L405 346L408 350L417 349L420 352L439 347L455 350L457 348L475 344L484 346L491 342L499 343L506 339L514 337L525 337L540 323L546 321L552 324L558 321L559 318L564 314L591 304L591 300L596 296L598 292L598 284L594 280L595 278L597 278L599 274L601 264L599 252L602 249L601 243L603 239L602 238L604 226L606 222L605 210L610 201L610 193L617 178"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" stroke="#ff0000" stroke-opacity="0.5" stroke-width="5" fill="none" class="leaflet-clickable" d="M617 178L617 178"></path></g></svg></div><div class="leaflet-marker-pane"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/map-icons/start.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -15px; margin-top: -30px; width: 30px; height: 30px; transform: translate3d(82px, 37px, 0px); z-index: 936;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(97px, 100px, 0px); z-index: 996;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(137px, 149px, 0px); z-index: 1045;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(135px, 205px, 0px); z-index: 1101;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(168px, 257px, 0px); z-index: 1153;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(199px, 305px, 0px); z-index: 1201;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(243px, 348px, 0px); z-index: 1244;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(302px, 357px, 0px); z-index: 1253;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(358px, 349px, 0px); z-index: 1245;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(414px, 349px, 0px); z-index: 1245;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(476px, 345px, 0px); z-index: 1241;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(536px, 327px, 0px); z-index: 1223;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(591px, 302px, 0px); z-index: 1198;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(601px, 245px, 0px); z-index: 1141;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/defaultPoint.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -7px; margin-top: -7px; width: 14px; height: 14px; opacity: 0; transform: translate3d(615px, 182px, 0px); z-index: 1078;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/map-icons/pause.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -15px; margin-top: -30px; width: 30px; height: 30px; transform: translate3d(617px, 178px, 0px); z-index: 1075;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/map-icons/resume.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -15px; margin-top: -30px; width: 30px; height: 30px; transform: translate3d(617px, 178px, 0px); z-index: 1076;"><img src="https://static-web.runkeeper.com/build/14793/static/oceanus/images/map-icons/end.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -15px; margin-top: -30px; width: 30px; height: 30px; transform: translate3d(617px, 178px, 0px); z-index: 1078;"><div class="leaflet-marker-icon mileMarker leaflet-zoom-animated" tabindex="0" style="margin-left: -20px; margin-top: -35px; width: 40px; height: 40px; transform: translate3d(147px, 220px, 0px); z-index: 718;"><div class="number">1</div><div class="distUnit">km</div></div><div class="leaflet-marker-icon mileMarker leaflet-zoom-animated" tabindex="0" style="margin-left: -20px; margin-top: -35px; width: 40px; height: 40px; transform: translate3d(275px, 362px, 0px); z-index: 860;"><div class="number">2</div><div class="distUnit">km</div></div><div class="leaflet-marker-icon mileMarker leaflet-zoom-animated" tabindex="0" style="margin-left: -20px; margin-top: -35px; width: 40px; height: 40px; transform: translate3d(469px, 346px, 0px); z-index: 844;"><div class="number">3</div><div class="distUnit">km</div></div><div class="leaflet-marker-icon mileMarker leaflet-zoom-animated" tabindex="0" style="margin-left: -20px; margin-top: -35px; width: 40px; height: 40px; transform: translate3d(603px, 234px, 0px); z-index: 732;"><div class="number">4</div><div class="distUnit">km</div></div></div><div class="leaflet-popup-pane"></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out">-</a></div><div class="leaflet-control-fullscreen leaflet-bar leaflet-control"><a class="leaflet-control-fullscreen-button leaflet-bar-part" href="#" title="View Fullscreen"></a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-grid map-tooltip leaflet-control" style="display: none;"><a class="close" href="#" title="close">close</a><div class="map-tooltip-content"></div></div><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="#" title="Layers"></a><form class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers"><span> Street View</span></label><label><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers"><span> Terrain View</span></label><label><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers"><span> Satellite View</span></label></div><div class="leaflet-control-layers-separator" style="display: none;"></div><div class="leaflet-control-layers-overlays"></div></form></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="map-legends wax-legends leaflet-control" style="display: none;"></div><div class="leaflet-control-attribution leaflet-control"><a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox © OpenStreetMap</a> <a class="mapbox-improve-map" href="https://www.mapbox.com/map-feedback/#runkeeper.4nc7syvi/8.269/61.540/14" target="_blank">Improve this map</a></div></div></div></div>
+
+			
+				<div id="mapControls">
+					<div id="mapActions">
+						
+							<div id="mapPrivate">
+								
+									
+									
+										<div class="icon friends" data-toggle="tooltip" data-container="body" title="Friends Only"></div>
+									
+								
+							</div>
+						
+						
+							
+							
+								<div id="mapRoute">
+
+									<div id="mapRouteName">
+										
+											
+											
+
+											
+										
+									</div>
+									
+										<a href="/new/route?deriveFromActivity=1044449793"><button style="margin-top: 7px; margin-left: 10px;" class="component ctaButton mini secondary" type="button">
+												<div class="buttonText">Make this a Route</div>
+											</button></a>
+									
+								</div>
+							
+						
+					</div>
+
+				</div>
+			
+		</div>
+	</div>
+
+               
+               
+               
+               
+               
+            
+
+            
+            
+              <div id="chartSection" class="clearfix">
+                
+                  <div class="row-fluid chartLabel">
+                    <div class="span3 statsItem" id="totalClimb">
+                      <h5>Total Climb</h5>
+                      <h1><span class="value">519</span>
+                      </h1>
+                    </div>
+                    <div class="span9">
+                      
+        
+   <script type="text/javascript">
+   (function($){
+      var activityChart;
+      var chartData;
+      var chartDataSeriesArray = [];
+      var highchartsOptions = {};
+      var xUnits = null;
+
+      activityInfoCallbacks.push(function(activityInfo)
+      {
+         if (activityInfo == null) return;
+
+         // Render activity chart
+         if (activityInfo.chartData)
+         {
+            chartData = activityInfo.chartData;
+
+            for (var seriesId in chartData.series)
+            {
+               chartData.series[seriesId].visible = true;
+               if (xUnits == null) xUnits = chartData.series[seriesId].xUnits;
+            }
+            
+            renderActivityChart();
+         }
+      });
+
+      function renderActivityChart()
+      {
+         highchartsOptions.chart =
+         {
+            renderTo: "climbChart",
+            margin: [0, 20, 30, 20],
+            zoomType: "x",
+            alignTicks: false
+         };
+
+         highchartsOptions.toolbar =
+         {
+            itemStyle: {
+               margin: "0px 0px 0px 100px"
+            }
+         };
+
+         highchartsOptions.title = {text:""};
+         highchartsOptions.credits = {enabled:false};
+         
+            highchartsOptions.legend = {
+               borderWidth: 0,
+               style: {
+                  left: "auto",
+                  right: "80px",
+                  top: "-15px",
+                  bottom: "auto"
+               },
+               itemHiddenStyle: {
+                  color: "#888"
+               }
+            };
+         highchartsOptions.series = [];
+         var seriesIndex = 0;
+         var seriesToAdd = chartData.series["ELEVATION"];
+
+         
+            if (chartData.series["ELEVATION"])
+            {
+               chartDataSeriesArray[seriesIndex] = seriesToAdd;
+               
+               highchartsOptions.series[seriesIndex++] = {
+                  id:   seriesToAdd.id,
+                  name: seriesToAdd.label,
+                  data: seriesToAdd.data,
+                  type: "area",
+                  color: "#148613",
+                  fillColor: "#6bbc65",
+                  //fillOpacity: 0.65,
+                  yAxis: 0,
+                  visible: seriesToAdd.visible,
+                  showInLegend: false
+                  
+               };
+            }
+         
+         
+         
+         
+         highchartsOptions.xAxis =
+         {
+            title: {
+               enabled: false
+            },
+            labels: {
+            	
+            	
+            	
+            		formatter: function() {return (this.value == 0) ? this.value : this.value + " " + xUnits;}
+            	
+            	
+            },
+            lineColor: "#99A9B9"
+         };
+         
+         highchartsOptions.yAxis =
+         [
+            {  // ELEVATION
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               startOnTick: false,
+               endOnTick: false,
+               max: (chartData.series["ELEVATION"]) ? chartData.series["ELEVATION"].maxValY + ((chartData.series["ELEVATION"].maxValY - chartData.series["ELEVATION"].minValY) * 0.15) : null,
+               min: (chartData.series["ELEVATION"]) ? chartData.series["ELEVATION"].minValY : null
+            },
+            {  // PACE
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               maxPadding: 0.15
+            },
+            {  // SPEED
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               maxPadding: 0.15
+            },
+            {  // HEARTRATE
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               maxPadding: 0.15
+            }
+         ];
+         
+         highchartsOptions.plotOptions =
+         {
+            series: {
+               marker: {
+                  enabled: false,
+                  symbol: "circle",
+                  radius: 4,
+                  states: {
+                     hover: {
+                        enabled: true
+                     }
+                  }
+               },
+               lineWidth: 3,
+               point: {
+                  events: {
+                     mouseOver: function() {if (typeof(mapController)!=='undefined' && mapController.model.map) syncMapToChartHover(this.x);}
+                  }
+               },
+               events: {
+                  mouseOut: function(event) {if (typeof(mapController)!=='undefined' && mapController.model.map) mapController.removeViewPointMarker();}
+               }
+            }
+         };
+         
+         highchartsOptions.tooltip =
+         {
+            formatter: function()
+            {
+               var pointData = chartData.pointData[this.x.toString()];
+               var timeStr = (pointData) ? "<br/>Time: " + formatTime(pointData.time / 60.0)  : "";
+               var yValStr;
+
+               if (chartDataSeriesArray[this.series.index].id == "PACE")
+               {
+                  yValStr = formatPace(this.y);
+               }
+               else if (chartDataSeriesArray[this.series.index].id == "SPEED")
+               {
+                  yValStr = Highcharts.numberFormat(this.y, 1);
+               }
+               else
+               {
+                  yValStr = Highcharts.numberFormat(this.y, 0);
+               }
+               
+               var toolTipLabel = "<b>" + this.series.name + ": " + yValStr + " "
+               					  + chartDataSeriesArray[this.series.index].yUnits + "</b><br/>";
+               
+               
+               		toolTipLabel += "Distance: " + Highcharts.numberFormat(this.x, 2) + " "
+               				   		+ chartDataSeriesArray[this.series.index].xUnits;
+               
+               
+               toolTipLabel += timeStr;
+               
+               return toolTipLabel;
+            }
+         };
+
+         if (activityChart)
+         {
+            activityChart.destroy();
+         }
+         
+         activityChart = new Highcharts.Chart(highchartsOptions);
+      }
+
+      
+      function syncMapToChartHover(distance)
+      {
+         if (mapController.model.map)
+         {
+            var distanceKey = ("d" + distanceFunctions.flooredNum(distance,3)).replace(".", "p");
+            var point = mapController.model.pointsByDistanceTraveled[distanceKey];
+            if(point)
+            {
+               mapController.showViewPointAtPoint(point);
+            }
+         }
+      }
+   }(jQuery));
+   </script>
+
+   <div id="climbChart" data-highcharts-chart="0"><div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 521px; height: 100px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; touch-action: none;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="521" height="100"><desc>Created with Highcharts 3.0.9</desc><defs><clipPath id="highcharts-1"><rect fill="none" x="0" y="0" width="481" height="70"></rect></clipPath></defs><rect rx="5" ry="5" fill="#FFFFFF" x="0" y="0" width="521" height="100"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"><path fill="none" d="M 24.5 70 L 24.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 134.5 70 L 134.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 245.5 70 L 245.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 355.5 70 L 355.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 465.5 70 L 465.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 20 70.5 L 501 70.5" stroke="#99A9B9" stroke-width="1" zIndex="7" visibility="visible"></path></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(20,0) scale(1 1)" clip-path="url(#highcharts-1)"><path fill="#6bbc65" d="M 4.715686274509805 69.99987689980964 L 5.890742150015525 69.98522797715611 L 6.9210415650074335 69.97414896002321 L 7.964480582441098 69.95199092575739 L 9.077923868345973 69.93414139815437 L 10.113412874218238 69.91961557569122 L 11.199141536485458 69.87493020658849 L 12.334005686875216 69.84132385461868 L 13.42613852512245 69.80771750264884 L 14.494531745512731 69.76303213354613 L 15.536314510537771 69.72942578157628 L 16.60327231217391 69.69581942960647 L 17.59050916454157 69.66221307763664 L 18.610539814600003 69.62872982585719 L 19.734362282265593 69.60632559121063 L 20.77205962468269 69.58392135656409 L 21.778619421817645 69.55031500459427 L 22.869648091792463 69.52791076994772 L 23.87675997306362 69.50562963549153 L 24.96293030263981 69.47202328352172 L 26.08885069002299 69.44961904887518 L 27.137810548818738 69.42721481422862 L 28.230495471202183 69.40481057958208 L 29.366353373037118 69.38252944512588 L 30.47582165316129 69.36012521047934 L 31.564641986591276 69.32651885850952 L 32.590745562148 69.28171038921641 L 33.63020957380097 69.23702502011368 L 34.72311532983889 69.18101443349732 L 35.884479518766646 69.11392482974803 L 36.94304564153242 69.04671212580838 L 38.05185142069315 68.97962252205912 L 39.0867883424292 68.90133080098657 L 40.19956912737063 68.82291597972362 L 41.28209570164784 68.73342214132781 L 42.41541401645621 68.64392830293197 L 43.568055276031885 68.55431136434576 L 44.58267550155547 68.47601964327322 L 45.63781870267675 68.40893003952397 L 46.77853494491032 68.35291945290757 L 47.845382329719214 68.31931310093776 L 48.95584436128856 68.2969088662912 L 50.101529360748 68.27462773183503 L 51.27183731268234 68.26342561451176 L 52.28601587089696 68.2410213798652 L 53.370419531237275 68.21861714521866 L 54.484525318105604 68.1962129105721 L 55.485122606569504 68.18501079324882 L 56.56820126498293 68.17380867592556 L 57.589446500141015 68.16272965879266 L 58.661593892657514 68.15152754146936 L 59.77834968337963 68.12912330682282 L 60.821236616677105 68.11792118949955 L 61.84987977926038 68.10671907217626 L 62.981762675314606 68.09551695485301 L 64.04264755145246 68.09551695485301 L 65.11854911609517 68.11792118949955 L 66.16044229794745 68.15152754146936 L 67.19504796920177 68.18501079324882 L 68.24257240924338 68.22981926254192 L 69.29318852044777 68.27462773183503 L 70.3389462912535 68.31931310093776 L 71.42423328621175 68.36412157023086 L 72.55567451495703 68.39772792220067 L 73.60430312327104 68.42000905665685 L 74.67126092490717 68.44241329130341 L 75.74020622943367 68.45361540862667 L 76.79159525842873 68.45361540862667 L 77.84629679224105 68.43121117398012 L 78.90011499143543 68.40893003952397 L 80.0050561816427 68.37532368755411 L 81.02707433459148 68.3417173355843 L 82.02910704180952 68.2969088662912 L 83.04306476636965 68.25222349718847 L 84.14403095079624 68.1962129105721 L 85.23307211788071 68.14032542414611 L 86.38692796255602 68.07311272020645 L 87.44527325166732 68.01722523378045 L 88.58289782273812 67.96121464716407 L 89.68010983503845 67.91652927806135 L 90.69638631297069 67.87172080876825 L 91.76798162135096 67.82691233947516 L 92.78227059639285 67.7822269703724 L 93.87429301781283 67.7486206184026 L 94.98508629986391 67.71501426643276 L 96.0421065870483 67.69261003178622 L 97.08333726793711 67.68140791446295 L 98.19280554806129 67.68140791446295 L 99.19340283652521 67.68140791446295 L 100.25097520784578 67.69261003178622 L 101.26780376991422 67.69261003178622 L 102.27348023243125 67.69261003178622 L 103.28313170072894 67.68140791446295 L 104.34236032445818 67.65912678000676 L 105.40092644722397 67.61431831071366 L 106.41786542611962 67.55830772409729 L 107.52788579038 67.5024202376713 L 108.56790188616917 67.42412851659874 L 109.65120137823708 67.33451157801254 L 110.75216756266364 67.23381562229345 L 111.88681087939894 67.11071543192779 L 112.9273790593243 66.98761524156214 L 113.9459742906286 66.8533129338732 L 114.9921737287433 66.71901062618429 L 115.98890642825374 66.58470831849534 L 117.02130376296324 66.4616081281297 L 118.10195325117735 66.33850793776405 L 119.15124436045483 66.20420563007514 L 120.16409791674253 66.08110543970948 L 121.25600992133529 65.95800524934383 L 122.30309269406793 65.82382604184528 L 123.36099631587025 65.68952373415634 L 124.38135821641042 65.55522142646743 L 125.40039511502367 65.40971700145522 L 126.42451118769006 65.26421257644301 L 127.43460432329674 65.11870815143082 L 128.5501455289192 64.96212470928572 L 129.63223043588744 64.79421604962697 L 130.64177148735791 64.6263073899682 L 131.7019938625323 64.46972394782311 L 132.7603391516436 64.31301740548761 L 133.8561157451898 64.1787150977987 L 134.85847970288958 64.04441279010976 L 135.86614366829693 63.910110482420855 L 136.88507015008295 63.7870102920552 L 137.92773624972594 63.66391010168955 L 138.95284607383746 63.5408099113239 L 140.02896847213466 63.42891183828151 L 141.04071786014998 63.317013765239146 L 142.06604851791604 63.19391357487349 L 143.15398551672808 63.05961126718455 L 144.21310372363007 62.92530895949564 L 145.2371093794692 62.77980453448344 L 146.2416816737138 62.63430010947123 L 147.26568732955295 62.500120901972686 L 148.26186794492716 62.365818594283745 L 149.39088000347311 62.22031416927154 L 150.39037312366457 62.07480974425934 L 151.45368717000176 61.90690108460059 L 152.46168238589084 61.73911552513223 L 153.59930695696167 61.582408982796736 L 154.79390661088914 61.42570244046127 L 155.79593931810717 61.25791688099288 L 156.81696371961078 61.09000822133413 L 157.83809853794165 60.910897444352116 L 158.8711583736146 60.72070765023717 L 159.91029113478584 60.53051785612226 L 160.9656551695616 60.351407079140216 L 162.11829642913727 60.1612172850253 L 163.20446675871344 59.99330862536655 L 164.20771405103113 59.8253999657078 L 165.29156562723526 59.6688165235627 L 166.2933775007988 59.51210998122721 L 167.3280935888804 59.35540343889174 L 168.33288671677948 59.18749477923299 L 169.45825502002646 59.0197092197646 L 170.4727648287228 58.840598442782586 L 171.512780924512 58.65040864866765 L 172.52706989955382 58.46009575436234 L 173.54809430105743 58.26990596024743 L 174.57320412516899 58.06851404880923 L 175.66301821004416 57.86699903718063 L 176.68934261925537 57.64320289109588 L 177.67635863796855 57.39700251036458 L 178.74751227903988 57.15080212963328 L 179.7821179502942 56.904601748901975 L 180.84863408462138 56.669603485493965 L 181.91967730886546 56.49049270851192 L 183.04405186066725 56.32270714904356 L 184.07357835786846 56.16600060670807 L 185.1240840522456 56.02049618169586 L 186.1766876663403 55.88619387400695 L 187.17872037355835 55.77429580096456 L 188.28476573203804 55.67359984524546 L 189.3692798092056 55.59530812417291 L 190.37926252798505 55.57290388952636 L 191.44610991279396 55.55049965487981 L 192.50003852881557 55.55049965487981 L 193.58444218915588 55.51689330290999 L 194.58989781801844 55.48341005113055 L 195.69583275967088 55.44980369916071 L 196.76157597620735 55.42739946451415 L 197.81274417154793 55.42739946451415 L 198.83354773939706 55.42739946451415 L 199.8981867876611 55.42739946451415 L 200.96326750323414 55.44980369916071 L 202.01576070050163 55.44980369916071 L 203.07233932037704 55.472207933807255 L 204.08883663196374 55.472207933807255 L 205.12951522871637 55.472207933807255 L 206.22319390254498 55.49448906826345 L 207.23637870931444 55.52809542023326 L 208.25287602090114 55.58410600684965 L 209.2976400402617 55.651195610598904 L 210.39904789199724 55.74068944899475 L 211.47759946049374 55.852710622227505 L 212.52744265390743 55.9534065779466 L 213.5981546276698 56.054102533665706 L 214.6547332475452 56.16600060670807 L 215.80384116864914 56.311505031720266 L 216.85545103129868 56.46821157405576 L 217.87294209433054 56.63599713352412 L 218.98218954080025 56.80390579318288 L 220.13803288836593 56.96061233551836 L 221.19991151594897 57.11719577766347 L 222.28453600994376 57.27390231999893 L 223.36264591113132 57.430608862334424 L 224.39040573909665 57.58719230447952 L 225.44477602242722 57.73269672949172 L 226.546735958299 57.855796919857376 L 227.60552291471924 57.95649287557647 L 228.6216889758242 58.03490769683939 L 229.7160301506163 58.06851404880923 L 230.7148607698443 58.07959306594213 L 231.78822274746048 58.07959306594213 L 232.90630354010946 58.05731193148594 L 233.97359259222736 58.001301344869574 L 235.07853378243462 57.92300962379703 L 236.11490612292482 57.833392685210825 L 237.1971014467203 57.73269672949172 L 238.23468837231013 57.62079865644933 L 239.27360029982694 57.47529423143713 L 240.3154934816792 57.32991290661532 L 241.41425132956095 57.20681271624967 L 242.48452163601434 57.07251040856073 L 243.49041893218586 56.91580386622526 L 244.51862042746018 56.72549097191996 L 245.5427365001265 56.535301177805025 L 246.59799011807505 56.33390926636682 L 247.6022311618379 56.13239425473825 L 248.66797437837437 55.93100234330005 L 249.70556130396426 55.72961043186185 L 250.70560650829194 55.52809542023326 L 251.7710184743467 55.3155013914718 L 252.76289283345852 55.080503128063754 L 253.8472964937988 54.84550486465574 L 254.8456854457179 54.621708718570986 L 255.84219731157387 54.38658735497258 L 256.836059173576 54.14038697424128 L 257.84261897071093 53.91659082815653 L 258.8509454370818 53.67039044742522 L 259.9055365540669 53.390706814914466 L 260.95074224073636 53.09969796489007 L 261.9892125009442 52.79748699754237 L 263.02878692942437 52.49539913038507 L 264.1012655724226 52.18198604571411 L 265.1219587234445 51.85749394391026 L 266.13039560664254 51.52179972478315 L 267.20099716357765 51.21958875743545 L 268.2672924642504 50.91750089027815 L 269.3822815857366 50.58168357096065 L 270.4740831735021 50.257191469156794 L 271.47821380043774 49.94390148467623 L 272.49117777355275 49.63048840000528 L 273.5008292418504 49.35068166730413 L 274.5550891083538 49.07099803479338 L 275.5560176472994 48.80239341941552 L 276.61833794219143 48.53378880403767 L 277.62268940278153 48.265184188659816 L 278.67319509715867 47.9853774559587 L 279.75605292191756 47.7280980580945 L 280.8385794961948 47.49297669449609 L 281.92099565364475 47.24677631376479 L 282.95703674365325 46.98949691590059 L 284.01725911882767 46.743296535169286 L 285.0134397342019 46.47469191979143 L 286.0490391569014 46.20608730441358 L 287.07094689302295 45.92628057171244 L 288.1064358988952 45.64647383901132 L 289.2164562631556 45.355588089177274 L 290.28595365181826 45.06457923915288 L 291.28069884843836 44.751289254672315 L 292.3065815903406 44.40439291822191 L 293.3367705885053 44.07977771622767 L 294.35105956354715 43.7664877317471 L 295.38687981990114 43.48668099904596 L 296.4174000685475 43.19567214902155 L 297.47353702111394 42.89358428186425 L 298.46607388118923 42.59137331451659 L 299.4960420456994 42.289285447359276 L 300.5223664549106 41.987074480011586 L 301.5863430022112 41.673784495531024 L 302.5878236252931 41.349169293536775 L 303.5845563248035 41.02467719173292 L 304.6239099196293 40.688982972605814 L 305.65078641297663 40.3531656532883 L 306.66386080291886 39.97278606505845 L 307.7197769218308 39.6034854939615 L 308.7224721300123 39.24526393999744 L 309.79969869658197 38.88716548622375 L 310.8007376523548 38.55147126709663 L 311.8281662298384 38.226979165292775 L 312.8358301952458 37.924768197945085 L 313.8925192319485 37.63388244811107 L 314.9347436642825 37.36527783273322 L 315.93235969841083 37.09667321735537 L 317.00737792843563 36.82806860197751 L 318.0769857339256 36.57066610392292 L 319.0813371945157 36.324465723191615 L 320.0952949190758 36.07826534246031 L 321.18875275924995 35.843267079052296 L 322.2652064080289 35.597066698320994 L 323.31604335288773 35.339664200266405 L 324.3159781403882 35.0934638195351 L 325.32364210579556 34.8472634388038 L 326.34853109625266 34.60106305807249 L 327.41350139499843 34.35486267734119 L 328.4115590964357 34.13106653125644 L 329.4597460374408 33.907270385171685 L 330.5794830824984 33.69467635641022 L 331.6222595989687 33.49316134478163 L 332.6896590679138 33.291769433343426 L 333.7487772748158 33.101456539038125 L 334.79398296148526 32.91126674492321 L 335.7996594240023 32.70987483348501 L 336.8372463495922 32.51956193917971 L 337.8580499174413 32.34057426238805 L 338.85456178329724 32.15026136808275 L 339.8764695194188 31.982352708424003 L 340.9616460975498 31.848173500925448 L 341.9635683879406 31.7250733105598 L 342.9906657149425 31.601973120194145 L 343.9978880130409 31.478872929828498 L 345.0099686515379 31.366851756595743 L 346.0104555231746 31.277357918199904 L 347.05367370695376 31.1766619624808 L 348.0519522420456 31.08716812408499 L 349.13227047977796 31.00875330282205 L 350.176813665484 30.9752700510426 L 351.17498178374865 30.930461581749498 L 352.22129163869056 30.863371978000238 L 353.23105352381555 30.796159274060585 L 354.23584665171467 30.740271787634583 L 355.2556564681186 30.706665435664746 L 356.2973288163164 30.65065484904838 L 357.33911158134146 30.594767362622385 L 358.35991514919056 30.549958893329283 L 359.4449813104943 30.49407140690328 L 360.5073016053863 30.426858702963628 L 361.62460948024466 30.348566981891082 L 362.7604673820796 30.25895004330488 L 363.8798731766555 30.180658322232325 L 364.97001851201236 30.10236660115978 L 366.02990963670504 30.023951779896834 L 367.04640694829175 29.945660058824288 L 368.1639356568046 29.88964947220792 L 369.2017434160489 29.844964103105184 L 370.2884658297613 29.811357751135375 L 371.37331115741057 29.788953516488824 L 372.44556896675437 29.766549281842273 L 373.5731456065461 29.721863912739536 L 374.63524506778367 29.654651208799883 L 375.715563305516 29.55395525308078 L 376.8264670043943 29.430855062715132 L 377.84848515734313 29.27414852037967 L 378.8846366641788 29.095160843588012 L 379.88136936368926 28.90484794928271 L 380.9413709052092 28.70345603784451 L 381.99165576593185 28.50206412640631 L 383.05960731901314 28.311751232101003 L 384.07102545654675 28.132763555309353 L 385.07935192291757 27.964854895650596 L 386.10092840855737 27.80814835331511 L 387.14215908944624 27.673846045626192 L 388.1797460150361 27.561947972583802 L 389.20353083722074 27.47245413418799 L 390.25116569408954 27.371758178468895 L 391.35853605449614 27.27106222274979 L 392.4187584296705 27.170366267030687 L 393.4316119859583 27.069547211121197 L 394.43353427634906 26.94644702075555 L 395.4545586778527 26.823346830389895 L 396.4543830485259 26.700246640024247 L 397.4531032509267 26.599550684305143 L 398.4884818399717 26.510056845909332 L 399.55069171803643 26.40936089019023 L 400.665349589041 26.308664934471132 L 401.66473229240523 26.252654347854737 L 402.7677963965494 26.219047995884928 L 403.79522497403303 26.17436262678219 L 404.86052652326055 26.107149922842538 L 405.86509881750516 26.028858201769985 L 406.92178785420776 25.92816224605089 L 407.9168643013096 25.816264173008527 L 409.0098804741748 25.681961865319586 L 410.0788257787013 25.525255322984123 L 411.1754857068654 25.36854878064863 L 412.2692747975213 25.200763221180267 L 413.3329200943402 25.021652444198224 L 414.3659799300131 24.820260532760024 L 415.41273145226404 24.64114975577801 L 416.48178717361776 24.450959961663067 L 417.47807820581926 24.260647067357766 L 418.4774609091835 24.07045727324285 L 419.49738114241467 23.88014437893755 L 420.6019910821402 23.701156702145894 L 421.70339893387575 23.52204592516385 L 422.73877752292077 23.343058248372202 L 423.7444539854378 23.163947471390188 L 424.77166172926695 22.962555559951987 L 425.8228299246075 22.749838431000136 L 426.91396901140956 22.51484016759209 L 427.9153392176642 22.29104402150734 L 428.9479573860281 22.078449992745874 L 429.98962973422596 21.865855963984387 L 431.00082703810506 21.65313883503253 L 432.0076076688945 21.451746923594328 L 433.0241049804812 21.239152894832863 L 434.04314187909443 21.004154631424825 L 435.0672579517608 20.757954250693523 L 436.08706776816473 20.48934963531567 L 437.1331567894522 20.20954290261455 L 438.16168953520827 19.907455035457247 L 439.37682671900274 19.582839833463005 L 440.3702469136959 19.2359434970126 L 441.4052942522592 18.86664292591565 L 442.42179156384594 18.486140237495427 L 443.46357432887095 18.060952179972475 L 444.47764247025833 17.62443890493587 L 445.5385273463962 17.17684661276636 L 446.5575642450094 16.729131220406465 L 447.56611154503474 16.281538928236962 L 448.5609671584821 15.83394663606746 L 449.57216446236123 15.386231243707591 L 450.5627138195461 14.938638951538088 L 451.58594655759447 14.479844542045292 L 452.598248029746 14.009724915038873 L 453.608009914871 13.528526270899526 L 454.6299176509926 13.058529744083472 L 455.64277120728025 12.577331099944153 L 456.65264350923246 12.096132455804813 L 457.67278457611815 11.626135928988752 L 458.6772464535355 11.167341519495992 L 459.74067091669986 10.70842400981283 L 460.85720587376755 10.283235952289878 L 461.937082444191 9.925137498516186 L 462.9239880460769 9.634128648491782 L 463.9237019999228 9.41033250240703 L 464.95742433655926 9.253625960071567 L 465.97833832123564 9.152930004352463 L 467.1083441312267 9.130525769705912 L 468.1520039823149 9.175334238999014 L 469.1397929188188 9.253625960071567 L 470.1484506356713 9.38792826776048 L 471.14960000827136 9.578118061875415 L 472.2004369531303 9.688908233204515 L 473.18977172521556 9.796990200345547 L 474.22934615369576 9.90125606158525 L 475.2948685365777 10.017831941861509 L 476.2843137254902 10.13206891852085 L 476.2843137254902 10.68601977516628 L 476.2843137254902 10.68601977516628 L 476.2843137254902 70 L 4.715686274509805 70" zIndex="0"></path><path fill="none" d="M 4.715686274509805 69.99987689980964 L 5.890742150015525 69.98522797715611 L 6.9210415650074335 69.97414896002321 L 7.964480582441098 69.95199092575739 L 9.077923868345973 69.93414139815437 L 10.113412874218238 69.91961557569122 L 11.199141536485458 69.87493020658849 L 12.334005686875216 69.84132385461868 L 13.42613852512245 69.80771750264884 L 14.494531745512731 69.76303213354613 L 15.536314510537771 69.72942578157628 L 16.60327231217391 69.69581942960647 L 17.59050916454157 69.66221307763664 L 18.610539814600003 69.62872982585719 L 19.734362282265593 69.60632559121063 L 20.77205962468269 69.58392135656409 L 21.778619421817645 69.55031500459427 L 22.869648091792463 69.52791076994772 L 23.87675997306362 69.50562963549153 L 24.96293030263981 69.47202328352172 L 26.08885069002299 69.44961904887518 L 27.137810548818738 69.42721481422862 L 28.230495471202183 69.40481057958208 L 29.366353373037118 69.38252944512588 L 30.47582165316129 69.36012521047934 L 31.564641986591276 69.32651885850952 L 32.590745562148 69.28171038921641 L 33.63020957380097 69.23702502011368 L 34.72311532983889 69.18101443349732 L 35.884479518766646 69.11392482974803 L 36.94304564153242 69.04671212580838 L 38.05185142069315 68.97962252205912 L 39.0867883424292 68.90133080098657 L 40.19956912737063 68.82291597972362 L 41.28209570164784 68.73342214132781 L 42.41541401645621 68.64392830293197 L 43.568055276031885 68.55431136434576 L 44.58267550155547 68.47601964327322 L 45.63781870267675 68.40893003952397 L 46.77853494491032 68.35291945290757 L 47.845382329719214 68.31931310093776 L 48.95584436128856 68.2969088662912 L 50.101529360748 68.27462773183503 L 51.27183731268234 68.26342561451176 L 52.28601587089696 68.2410213798652 L 53.370419531237275 68.21861714521866 L 54.484525318105604 68.1962129105721 L 55.485122606569504 68.18501079324882 L 56.56820126498293 68.17380867592556 L 57.589446500141015 68.16272965879266 L 58.661593892657514 68.15152754146936 L 59.77834968337963 68.12912330682282 L 60.821236616677105 68.11792118949955 L 61.84987977926038 68.10671907217626 L 62.981762675314606 68.09551695485301 L 64.04264755145246 68.09551695485301 L 65.11854911609517 68.11792118949955 L 66.16044229794745 68.15152754146936 L 67.19504796920177 68.18501079324882 L 68.24257240924338 68.22981926254192 L 69.29318852044777 68.27462773183503 L 70.3389462912535 68.31931310093776 L 71.42423328621175 68.36412157023086 L 72.55567451495703 68.39772792220067 L 73.60430312327104 68.42000905665685 L 74.67126092490717 68.44241329130341 L 75.74020622943367 68.45361540862667 L 76.79159525842873 68.45361540862667 L 77.84629679224105 68.43121117398012 L 78.90011499143543 68.40893003952397 L 80.0050561816427 68.37532368755411 L 81.02707433459148 68.3417173355843 L 82.02910704180952 68.2969088662912 L 83.04306476636965 68.25222349718847 L 84.14403095079624 68.1962129105721 L 85.23307211788071 68.14032542414611 L 86.38692796255602 68.07311272020645 L 87.44527325166732 68.01722523378045 L 88.58289782273812 67.96121464716407 L 89.68010983503845 67.91652927806135 L 90.69638631297069 67.87172080876825 L 91.76798162135096 67.82691233947516 L 92.78227059639285 67.7822269703724 L 93.87429301781283 67.7486206184026 L 94.98508629986391 67.71501426643276 L 96.0421065870483 67.69261003178622 L 97.08333726793711 67.68140791446295 L 98.19280554806129 67.68140791446295 L 99.19340283652521 67.68140791446295 L 100.25097520784578 67.69261003178622 L 101.26780376991422 67.69261003178622 L 102.27348023243125 67.69261003178622 L 103.28313170072894 67.68140791446295 L 104.34236032445818 67.65912678000676 L 105.40092644722397 67.61431831071366 L 106.41786542611962 67.55830772409729 L 107.52788579038 67.5024202376713 L 108.56790188616917 67.42412851659874 L 109.65120137823708 67.33451157801254 L 110.75216756266364 67.23381562229345 L 111.88681087939894 67.11071543192779 L 112.9273790593243 66.98761524156214 L 113.9459742906286 66.8533129338732 L 114.9921737287433 66.71901062618429 L 115.98890642825374 66.58470831849534 L 117.02130376296324 66.4616081281297 L 118.10195325117735 66.33850793776405 L 119.15124436045483 66.20420563007514 L 120.16409791674253 66.08110543970948 L 121.25600992133529 65.95800524934383 L 122.30309269406793 65.82382604184528 L 123.36099631587025 65.68952373415634 L 124.38135821641042 65.55522142646743 L 125.40039511502367 65.40971700145522 L 126.42451118769006 65.26421257644301 L 127.43460432329674 65.11870815143082 L 128.5501455289192 64.96212470928572 L 129.63223043588744 64.79421604962697 L 130.64177148735791 64.6263073899682 L 131.7019938625323 64.46972394782311 L 132.7603391516436 64.31301740548761 L 133.8561157451898 64.1787150977987 L 134.85847970288958 64.04441279010976 L 135.86614366829693 63.910110482420855 L 136.88507015008295 63.7870102920552 L 137.92773624972594 63.66391010168955 L 138.95284607383746 63.5408099113239 L 140.02896847213466 63.42891183828151 L 141.04071786014998 63.317013765239146 L 142.06604851791604 63.19391357487349 L 143.15398551672808 63.05961126718455 L 144.21310372363007 62.92530895949564 L 145.2371093794692 62.77980453448344 L 146.2416816737138 62.63430010947123 L 147.26568732955295 62.500120901972686 L 148.26186794492716 62.365818594283745 L 149.39088000347311 62.22031416927154 L 150.39037312366457 62.07480974425934 L 151.45368717000176 61.90690108460059 L 152.46168238589084 61.73911552513223 L 153.59930695696167 61.582408982796736 L 154.79390661088914 61.42570244046127 L 155.79593931810717 61.25791688099288 L 156.81696371961078 61.09000822133413 L 157.83809853794165 60.910897444352116 L 158.8711583736146 60.72070765023717 L 159.91029113478584 60.53051785612226 L 160.9656551695616 60.351407079140216 L 162.11829642913727 60.1612172850253 L 163.20446675871344 59.99330862536655 L 164.20771405103113 59.8253999657078 L 165.29156562723526 59.6688165235627 L 166.2933775007988 59.51210998122721 L 167.3280935888804 59.35540343889174 L 168.33288671677948 59.18749477923299 L 169.45825502002646 59.0197092197646 L 170.4727648287228 58.840598442782586 L 171.512780924512 58.65040864866765 L 172.52706989955382 58.46009575436234 L 173.54809430105743 58.26990596024743 L 174.57320412516899 58.06851404880923 L 175.66301821004416 57.86699903718063 L 176.68934261925537 57.64320289109588 L 177.67635863796855 57.39700251036458 L 178.74751227903988 57.15080212963328 L 179.7821179502942 56.904601748901975 L 180.84863408462138 56.669603485493965 L 181.91967730886546 56.49049270851192 L 183.04405186066725 56.32270714904356 L 184.07357835786846 56.16600060670807 L 185.1240840522456 56.02049618169586 L 186.1766876663403 55.88619387400695 L 187.17872037355835 55.77429580096456 L 188.28476573203804 55.67359984524546 L 189.3692798092056 55.59530812417291 L 190.37926252798505 55.57290388952636 L 191.44610991279396 55.55049965487981 L 192.50003852881557 55.55049965487981 L 193.58444218915588 55.51689330290999 L 194.58989781801844 55.48341005113055 L 195.69583275967088 55.44980369916071 L 196.76157597620735 55.42739946451415 L 197.81274417154793 55.42739946451415 L 198.83354773939706 55.42739946451415 L 199.8981867876611 55.42739946451415 L 200.96326750323414 55.44980369916071 L 202.01576070050163 55.44980369916071 L 203.07233932037704 55.472207933807255 L 204.08883663196374 55.472207933807255 L 205.12951522871637 55.472207933807255 L 206.22319390254498 55.49448906826345 L 207.23637870931444 55.52809542023326 L 208.25287602090114 55.58410600684965 L 209.2976400402617 55.651195610598904 L 210.39904789199724 55.74068944899475 L 211.47759946049374 55.852710622227505 L 212.52744265390743 55.9534065779466 L 213.5981546276698 56.054102533665706 L 214.6547332475452 56.16600060670807 L 215.80384116864914 56.311505031720266 L 216.85545103129868 56.46821157405576 L 217.87294209433054 56.63599713352412 L 218.98218954080025 56.80390579318288 L 220.13803288836593 56.96061233551836 L 221.19991151594897 57.11719577766347 L 222.28453600994376 57.27390231999893 L 223.36264591113132 57.430608862334424 L 224.39040573909665 57.58719230447952 L 225.44477602242722 57.73269672949172 L 226.546735958299 57.855796919857376 L 227.60552291471924 57.95649287557647 L 228.6216889758242 58.03490769683939 L 229.7160301506163 58.06851404880923 L 230.7148607698443 58.07959306594213 L 231.78822274746048 58.07959306594213 L 232.90630354010946 58.05731193148594 L 233.97359259222736 58.001301344869574 L 235.07853378243462 57.92300962379703 L 236.11490612292482 57.833392685210825 L 237.1971014467203 57.73269672949172 L 238.23468837231013 57.62079865644933 L 239.27360029982694 57.47529423143713 L 240.3154934816792 57.32991290661532 L 241.41425132956095 57.20681271624967 L 242.48452163601434 57.07251040856073 L 243.49041893218586 56.91580386622526 L 244.51862042746018 56.72549097191996 L 245.5427365001265 56.535301177805025 L 246.59799011807505 56.33390926636682 L 247.6022311618379 56.13239425473825 L 248.66797437837437 55.93100234330005 L 249.70556130396426 55.72961043186185 L 250.70560650829194 55.52809542023326 L 251.7710184743467 55.3155013914718 L 252.76289283345852 55.080503128063754 L 253.8472964937988 54.84550486465574 L 254.8456854457179 54.621708718570986 L 255.84219731157387 54.38658735497258 L 256.836059173576 54.14038697424128 L 257.84261897071093 53.91659082815653 L 258.8509454370818 53.67039044742522 L 259.9055365540669 53.390706814914466 L 260.95074224073636 53.09969796489007 L 261.9892125009442 52.79748699754237 L 263.02878692942437 52.49539913038507 L 264.1012655724226 52.18198604571411 L 265.1219587234445 51.85749394391026 L 266.13039560664254 51.52179972478315 L 267.20099716357765 51.21958875743545 L 268.2672924642504 50.91750089027815 L 269.3822815857366 50.58168357096065 L 270.4740831735021 50.257191469156794 L 271.47821380043774 49.94390148467623 L 272.49117777355275 49.63048840000528 L 273.5008292418504 49.35068166730413 L 274.5550891083538 49.07099803479338 L 275.5560176472994 48.80239341941552 L 276.61833794219143 48.53378880403767 L 277.62268940278153 48.265184188659816 L 278.67319509715867 47.9853774559587 L 279.75605292191756 47.7280980580945 L 280.8385794961948 47.49297669449609 L 281.92099565364475 47.24677631376479 L 282.95703674365325 46.98949691590059 L 284.01725911882767 46.743296535169286 L 285.0134397342019 46.47469191979143 L 286.0490391569014 46.20608730441358 L 287.07094689302295 45.92628057171244 L 288.1064358988952 45.64647383901132 L 289.2164562631556 45.355588089177274 L 290.28595365181826 45.06457923915288 L 291.28069884843836 44.751289254672315 L 292.3065815903406 44.40439291822191 L 293.3367705885053 44.07977771622767 L 294.35105956354715 43.7664877317471 L 295.38687981990114 43.48668099904596 L 296.4174000685475 43.19567214902155 L 297.47353702111394 42.89358428186425 L 298.46607388118923 42.59137331451659 L 299.4960420456994 42.289285447359276 L 300.5223664549106 41.987074480011586 L 301.5863430022112 41.673784495531024 L 302.5878236252931 41.349169293536775 L 303.5845563248035 41.02467719173292 L 304.6239099196293 40.688982972605814 L 305.65078641297663 40.3531656532883 L 306.66386080291886 39.97278606505845 L 307.7197769218308 39.6034854939615 L 308.7224721300123 39.24526393999744 L 309.79969869658197 38.88716548622375 L 310.8007376523548 38.55147126709663 L 311.8281662298384 38.226979165292775 L 312.8358301952458 37.924768197945085 L 313.8925192319485 37.63388244811107 L 314.9347436642825 37.36527783273322 L 315.93235969841083 37.09667321735537 L 317.00737792843563 36.82806860197751 L 318.0769857339256 36.57066610392292 L 319.0813371945157 36.324465723191615 L 320.0952949190758 36.07826534246031 L 321.18875275924995 35.843267079052296 L 322.2652064080289 35.597066698320994 L 323.31604335288773 35.339664200266405 L 324.3159781403882 35.0934638195351 L 325.32364210579556 34.8472634388038 L 326.34853109625266 34.60106305807249 L 327.41350139499843 34.35486267734119 L 328.4115590964357 34.13106653125644 L 329.4597460374408 33.907270385171685 L 330.5794830824984 33.69467635641022 L 331.6222595989687 33.49316134478163 L 332.6896590679138 33.291769433343426 L 333.7487772748158 33.101456539038125 L 334.79398296148526 32.91126674492321 L 335.7996594240023 32.70987483348501 L 336.8372463495922 32.51956193917971 L 337.8580499174413 32.34057426238805 L 338.85456178329724 32.15026136808275 L 339.8764695194188 31.982352708424003 L 340.9616460975498 31.848173500925448 L 341.9635683879406 31.7250733105598 L 342.9906657149425 31.601973120194145 L 343.9978880130409 31.478872929828498 L 345.0099686515379 31.366851756595743 L 346.0104555231746 31.277357918199904 L 347.05367370695376 31.1766619624808 L 348.0519522420456 31.08716812408499 L 349.13227047977796 31.00875330282205 L 350.176813665484 30.9752700510426 L 351.17498178374865 30.930461581749498 L 352.22129163869056 30.863371978000238 L 353.23105352381555 30.796159274060585 L 354.23584665171467 30.740271787634583 L 355.2556564681186 30.706665435664746 L 356.2973288163164 30.65065484904838 L 357.33911158134146 30.594767362622385 L 358.35991514919056 30.549958893329283 L 359.4449813104943 30.49407140690328 L 360.5073016053863 30.426858702963628 L 361.62460948024466 30.348566981891082 L 362.7604673820796 30.25895004330488 L 363.8798731766555 30.180658322232325 L 364.97001851201236 30.10236660115978 L 366.02990963670504 30.023951779896834 L 367.04640694829175 29.945660058824288 L 368.1639356568046 29.88964947220792 L 369.2017434160489 29.844964103105184 L 370.2884658297613 29.811357751135375 L 371.37331115741057 29.788953516488824 L 372.44556896675437 29.766549281842273 L 373.5731456065461 29.721863912739536 L 374.63524506778367 29.654651208799883 L 375.715563305516 29.55395525308078 L 376.8264670043943 29.430855062715132 L 377.84848515734313 29.27414852037967 L 378.8846366641788 29.095160843588012 L 379.88136936368926 28.90484794928271 L 380.9413709052092 28.70345603784451 L 381.99165576593185 28.50206412640631 L 383.05960731901314 28.311751232101003 L 384.07102545654675 28.132763555309353 L 385.07935192291757 27.964854895650596 L 386.10092840855737 27.80814835331511 L 387.14215908944624 27.673846045626192 L 388.1797460150361 27.561947972583802 L 389.20353083722074 27.47245413418799 L 390.25116569408954 27.371758178468895 L 391.35853605449614 27.27106222274979 L 392.4187584296705 27.170366267030687 L 393.4316119859583 27.069547211121197 L 394.43353427634906 26.94644702075555 L 395.4545586778527 26.823346830389895 L 396.4543830485259 26.700246640024247 L 397.4531032509267 26.599550684305143 L 398.4884818399717 26.510056845909332 L 399.55069171803643 26.40936089019023 L 400.665349589041 26.308664934471132 L 401.66473229240523 26.252654347854737 L 402.7677963965494 26.219047995884928 L 403.79522497403303 26.17436262678219 L 404.86052652326055 26.107149922842538 L 405.86509881750516 26.028858201769985 L 406.92178785420776 25.92816224605089 L 407.9168643013096 25.816264173008527 L 409.0098804741748 25.681961865319586 L 410.0788257787013 25.525255322984123 L 411.1754857068654 25.36854878064863 L 412.2692747975213 25.200763221180267 L 413.3329200943402 25.021652444198224 L 414.3659799300131 24.820260532760024 L 415.41273145226404 24.64114975577801 L 416.48178717361776 24.450959961663067 L 417.47807820581926 24.260647067357766 L 418.4774609091835 24.07045727324285 L 419.49738114241467 23.88014437893755 L 420.6019910821402 23.701156702145894 L 421.70339893387575 23.52204592516385 L 422.73877752292077 23.343058248372202 L 423.7444539854378 23.163947471390188 L 424.77166172926695 22.962555559951987 L 425.8228299246075 22.749838431000136 L 426.91396901140956 22.51484016759209 L 427.9153392176642 22.29104402150734 L 428.9479573860281 22.078449992745874 L 429.98962973422596 21.865855963984387 L 431.00082703810506 21.65313883503253 L 432.0076076688945 21.451746923594328 L 433.0241049804812 21.239152894832863 L 434.04314187909443 21.004154631424825 L 435.0672579517608 20.757954250693523 L 436.08706776816473 20.48934963531567 L 437.1331567894522 20.20954290261455 L 438.16168953520827 19.907455035457247 L 439.37682671900274 19.582839833463005 L 440.3702469136959 19.2359434970126 L 441.4052942522592 18.86664292591565 L 442.42179156384594 18.486140237495427 L 443.46357432887095 18.060952179972475 L 444.47764247025833 17.62443890493587 L 445.5385273463962 17.17684661276636 L 446.5575642450094 16.729131220406465 L 447.56611154503474 16.281538928236962 L 448.5609671584821 15.83394663606746 L 449.57216446236123 15.386231243707591 L 450.5627138195461 14.938638951538088 L 451.58594655759447 14.479844542045292 L 452.598248029746 14.009724915038873 L 453.608009914871 13.528526270899526 L 454.6299176509926 13.058529744083472 L 455.64277120728025 12.577331099944153 L 456.65264350923246 12.096132455804813 L 457.67278457611815 11.626135928988752 L 458.6772464535355 11.167341519495992 L 459.74067091669986 10.70842400981283 L 460.85720587376755 10.283235952289878 L 461.937082444191 9.925137498516186 L 462.9239880460769 9.634128648491782 L 463.9237019999228 9.41033250240703 L 464.95742433655926 9.253625960071567 L 465.97833832123564 9.152930004352463 L 467.1083441312267 9.130525769705912 L 468.1520039823149 9.175334238999014 L 469.1397929188188 9.253625960071567 L 470.1484506356713 9.38792826776048 L 471.14960000827136 9.578118061875415 L 472.2004369531303 9.688908233204515 L 473.18977172521556 9.796990200345547 L 474.22934615369576 9.90125606158525 L 475.2948685365777 10.017831941861509 L 476.2843137254902 10.13206891852085 L 476.2843137254902 10.68601977516628 L 476.2843137254902 10.68601977516628" stroke="#148613" stroke-width="3" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M -5.284313725490195 69.99987689980964 L 4.715686274509805 69.99987689980964 L 5.890742150015525 69.98522797715611 L 6.9210415650074335 69.97414896002321 L 7.964480582441098 69.95199092575739 L 9.077923868345973 69.93414139815437 L 10.113412874218238 69.91961557569122 L 11.199141536485458 69.87493020658849 L 12.334005686875216 69.84132385461868 L 13.42613852512245 69.80771750264884 L 14.494531745512731 69.76303213354613 L 15.536314510537771 69.72942578157628 L 16.60327231217391 69.69581942960647 L 17.59050916454157 69.66221307763664 L 18.610539814600003 69.62872982585719 L 19.734362282265593 69.60632559121063 L 20.77205962468269 69.58392135656409 L 21.778619421817645 69.55031500459427 L 22.869648091792463 69.52791076994772 L 23.87675997306362 69.50562963549153 L 24.96293030263981 69.47202328352172 L 26.08885069002299 69.44961904887518 L 27.137810548818738 69.42721481422862 L 28.230495471202183 69.40481057958208 L 29.366353373037118 69.38252944512588 L 30.47582165316129 69.36012521047934 L 31.564641986591276 69.32651885850952 L 32.590745562148 69.28171038921641 L 33.63020957380097 69.23702502011368 L 34.72311532983889 69.18101443349732 L 35.884479518766646 69.11392482974803 L 36.94304564153242 69.04671212580838 L 38.05185142069315 68.97962252205912 L 39.0867883424292 68.90133080098657 L 40.19956912737063 68.82291597972362 L 41.28209570164784 68.73342214132781 L 42.41541401645621 68.64392830293197 L 43.568055276031885 68.55431136434576 L 44.58267550155547 68.47601964327322 L 45.63781870267675 68.40893003952397 L 46.77853494491032 68.35291945290757 L 47.845382329719214 68.31931310093776 L 48.95584436128856 68.2969088662912 L 50.101529360748 68.27462773183503 L 51.27183731268234 68.26342561451176 L 52.28601587089696 68.2410213798652 L 53.370419531237275 68.21861714521866 L 54.484525318105604 68.1962129105721 L 55.485122606569504 68.18501079324882 L 56.56820126498293 68.17380867592556 L 57.589446500141015 68.16272965879266 L 58.661593892657514 68.15152754146936 L 59.77834968337963 68.12912330682282 L 60.821236616677105 68.11792118949955 L 61.84987977926038 68.10671907217626 L 62.981762675314606 68.09551695485301 L 64.04264755145246 68.09551695485301 L 65.11854911609517 68.11792118949955 L 66.16044229794745 68.15152754146936 L 67.19504796920177 68.18501079324882 L 68.24257240924338 68.22981926254192 L 69.29318852044777 68.27462773183503 L 70.3389462912535 68.31931310093776 L 71.42423328621175 68.36412157023086 L 72.55567451495703 68.39772792220067 L 73.60430312327104 68.42000905665685 L 74.67126092490717 68.44241329130341 L 75.74020622943367 68.45361540862667 L 76.79159525842873 68.45361540862667 L 77.84629679224105 68.43121117398012 L 78.90011499143543 68.40893003952397 L 80.0050561816427 68.37532368755411 L 81.02707433459148 68.3417173355843 L 82.02910704180952 68.2969088662912 L 83.04306476636965 68.25222349718847 L 84.14403095079624 68.1962129105721 L 85.23307211788071 68.14032542414611 L 86.38692796255602 68.07311272020645 L 87.44527325166732 68.01722523378045 L 88.58289782273812 67.96121464716407 L 89.68010983503845 67.91652927806135 L 90.69638631297069 67.87172080876825 L 91.76798162135096 67.82691233947516 L 92.78227059639285 67.7822269703724 L 93.87429301781283 67.7486206184026 L 94.98508629986391 67.71501426643276 L 96.0421065870483 67.69261003178622 L 97.08333726793711 67.68140791446295 L 98.19280554806129 67.68140791446295 L 99.19340283652521 67.68140791446295 L 100.25097520784578 67.69261003178622 L 101.26780376991422 67.69261003178622 L 102.27348023243125 67.69261003178622 L 103.28313170072894 67.68140791446295 L 104.34236032445818 67.65912678000676 L 105.40092644722397 67.61431831071366 L 106.41786542611962 67.55830772409729 L 107.52788579038 67.5024202376713 L 108.56790188616917 67.42412851659874 L 109.65120137823708 67.33451157801254 L 110.75216756266364 67.23381562229345 L 111.88681087939894 67.11071543192779 L 112.9273790593243 66.98761524156214 L 113.9459742906286 66.8533129338732 L 114.9921737287433 66.71901062618429 L 115.98890642825374 66.58470831849534 L 117.02130376296324 66.4616081281297 L 118.10195325117735 66.33850793776405 L 119.15124436045483 66.20420563007514 L 120.16409791674253 66.08110543970948 L 121.25600992133529 65.95800524934383 L 122.30309269406793 65.82382604184528 L 123.36099631587025 65.68952373415634 L 124.38135821641042 65.55522142646743 L 125.40039511502367 65.40971700145522 L 126.42451118769006 65.26421257644301 L 127.43460432329674 65.11870815143082 L 128.5501455289192 64.96212470928572 L 129.63223043588744 64.79421604962697 L 130.64177148735791 64.6263073899682 L 131.7019938625323 64.46972394782311 L 132.7603391516436 64.31301740548761 L 133.8561157451898 64.1787150977987 L 134.85847970288958 64.04441279010976 L 135.86614366829693 63.910110482420855 L 136.88507015008295 63.7870102920552 L 137.92773624972594 63.66391010168955 L 138.95284607383746 63.5408099113239 L 140.02896847213466 63.42891183828151 L 141.04071786014998 63.317013765239146 L 142.06604851791604 63.19391357487349 L 143.15398551672808 63.05961126718455 L 144.21310372363007 62.92530895949564 L 145.2371093794692 62.77980453448344 L 146.2416816737138 62.63430010947123 L 147.26568732955295 62.500120901972686 L 148.26186794492716 62.365818594283745 L 149.39088000347311 62.22031416927154 L 150.39037312366457 62.07480974425934 L 151.45368717000176 61.90690108460059 L 152.46168238589084 61.73911552513223 L 153.59930695696167 61.582408982796736 L 154.79390661088914 61.42570244046127 L 155.79593931810717 61.25791688099288 L 156.81696371961078 61.09000822133413 L 157.83809853794165 60.910897444352116 L 158.8711583736146 60.72070765023717 L 159.91029113478584 60.53051785612226 L 160.9656551695616 60.351407079140216 L 162.11829642913727 60.1612172850253 L 163.20446675871344 59.99330862536655 L 164.20771405103113 59.8253999657078 L 165.29156562723526 59.6688165235627 L 166.2933775007988 59.51210998122721 L 167.3280935888804 59.35540343889174 L 168.33288671677948 59.18749477923299 L 169.45825502002646 59.0197092197646 L 170.4727648287228 58.840598442782586 L 171.512780924512 58.65040864866765 L 172.52706989955382 58.46009575436234 L 173.54809430105743 58.26990596024743 L 174.57320412516899 58.06851404880923 L 175.66301821004416 57.86699903718063 L 176.68934261925537 57.64320289109588 L 177.67635863796855 57.39700251036458 L 178.74751227903988 57.15080212963328 L 179.7821179502942 56.904601748901975 L 180.84863408462138 56.669603485493965 L 181.91967730886546 56.49049270851192 L 183.04405186066725 56.32270714904356 L 184.07357835786846 56.16600060670807 L 185.1240840522456 56.02049618169586 L 186.1766876663403 55.88619387400695 L 187.17872037355835 55.77429580096456 L 188.28476573203804 55.67359984524546 L 189.3692798092056 55.59530812417291 L 190.37926252798505 55.57290388952636 L 191.44610991279396 55.55049965487981 L 192.50003852881557 55.55049965487981 L 193.58444218915588 55.51689330290999 L 194.58989781801844 55.48341005113055 L 195.69583275967088 55.44980369916071 L 196.76157597620735 55.42739946451415 L 197.81274417154793 55.42739946451415 L 198.83354773939706 55.42739946451415 L 199.8981867876611 55.42739946451415 L 200.96326750323414 55.44980369916071 L 202.01576070050163 55.44980369916071 L 203.07233932037704 55.472207933807255 L 204.08883663196374 55.472207933807255 L 205.12951522871637 55.472207933807255 L 206.22319390254498 55.49448906826345 L 207.23637870931444 55.52809542023326 L 208.25287602090114 55.58410600684965 L 209.2976400402617 55.651195610598904 L 210.39904789199724 55.74068944899475 L 211.47759946049374 55.852710622227505 L 212.52744265390743 55.9534065779466 L 213.5981546276698 56.054102533665706 L 214.6547332475452 56.16600060670807 L 215.80384116864914 56.311505031720266 L 216.85545103129868 56.46821157405576 L 217.87294209433054 56.63599713352412 L 218.98218954080025 56.80390579318288 L 220.13803288836593 56.96061233551836 L 221.19991151594897 57.11719577766347 L 222.28453600994376 57.27390231999893 L 223.36264591113132 57.430608862334424 L 224.39040573909665 57.58719230447952 L 225.44477602242722 57.73269672949172 L 226.546735958299 57.855796919857376 L 227.60552291471924 57.95649287557647 L 228.6216889758242 58.03490769683939 L 229.7160301506163 58.06851404880923 L 230.7148607698443 58.07959306594213 L 231.78822274746048 58.07959306594213 L 232.90630354010946 58.05731193148594 L 233.97359259222736 58.001301344869574 L 235.07853378243462 57.92300962379703 L 236.11490612292482 57.833392685210825 L 237.1971014467203 57.73269672949172 L 238.23468837231013 57.62079865644933 L 239.27360029982694 57.47529423143713 L 240.3154934816792 57.32991290661532 L 241.41425132956095 57.20681271624967 L 242.48452163601434 57.07251040856073 L 243.49041893218586 56.91580386622526 L 244.51862042746018 56.72549097191996 L 245.5427365001265 56.535301177805025 L 246.59799011807505 56.33390926636682 L 247.6022311618379 56.13239425473825 L 248.66797437837437 55.93100234330005 L 249.70556130396426 55.72961043186185 L 250.70560650829194 55.52809542023326 L 251.7710184743467 55.3155013914718 L 252.76289283345852 55.080503128063754 L 253.8472964937988 54.84550486465574 L 254.8456854457179 54.621708718570986 L 255.84219731157387 54.38658735497258 L 256.836059173576 54.14038697424128 L 257.84261897071093 53.91659082815653 L 258.8509454370818 53.67039044742522 L 259.9055365540669 53.390706814914466 L 260.95074224073636 53.09969796489007 L 261.9892125009442 52.79748699754237 L 263.02878692942437 52.49539913038507 L 264.1012655724226 52.18198604571411 L 265.1219587234445 51.85749394391026 L 266.13039560664254 51.52179972478315 L 267.20099716357765 51.21958875743545 L 268.2672924642504 50.91750089027815 L 269.3822815857366 50.58168357096065 L 270.4740831735021 50.257191469156794 L 271.47821380043774 49.94390148467623 L 272.49117777355275 49.63048840000528 L 273.5008292418504 49.35068166730413 L 274.5550891083538 49.07099803479338 L 275.5560176472994 48.80239341941552 L 276.61833794219143 48.53378880403767 L 277.62268940278153 48.265184188659816 L 278.67319509715867 47.9853774559587 L 279.75605292191756 47.7280980580945 L 280.8385794961948 47.49297669449609 L 281.92099565364475 47.24677631376479 L 282.95703674365325 46.98949691590059 L 284.01725911882767 46.743296535169286 L 285.0134397342019 46.47469191979143 L 286.0490391569014 46.20608730441358 L 287.07094689302295 45.92628057171244 L 288.1064358988952 45.64647383901132 L 289.2164562631556 45.355588089177274 L 290.28595365181826 45.06457923915288 L 291.28069884843836 44.751289254672315 L 292.3065815903406 44.40439291822191 L 293.3367705885053 44.07977771622767 L 294.35105956354715 43.7664877317471 L 295.38687981990114 43.48668099904596 L 296.4174000685475 43.19567214902155 L 297.47353702111394 42.89358428186425 L 298.46607388118923 42.59137331451659 L 299.4960420456994 42.289285447359276 L 300.5223664549106 41.987074480011586 L 301.5863430022112 41.673784495531024 L 302.5878236252931 41.349169293536775 L 303.5845563248035 41.02467719173292 L 304.6239099196293 40.688982972605814 L 305.65078641297663 40.3531656532883 L 306.66386080291886 39.97278606505845 L 307.7197769218308 39.6034854939615 L 308.7224721300123 39.24526393999744 L 309.79969869658197 38.88716548622375 L 310.8007376523548 38.55147126709663 L 311.8281662298384 38.226979165292775 L 312.8358301952458 37.924768197945085 L 313.8925192319485 37.63388244811107 L 314.9347436642825 37.36527783273322 L 315.93235969841083 37.09667321735537 L 317.00737792843563 36.82806860197751 L 318.0769857339256 36.57066610392292 L 319.0813371945157 36.324465723191615 L 320.0952949190758 36.07826534246031 L 321.18875275924995 35.843267079052296 L 322.2652064080289 35.597066698320994 L 323.31604335288773 35.339664200266405 L 324.3159781403882 35.0934638195351 L 325.32364210579556 34.8472634388038 L 326.34853109625266 34.60106305807249 L 327.41350139499843 34.35486267734119 L 328.4115590964357 34.13106653125644 L 329.4597460374408 33.907270385171685 L 330.5794830824984 33.69467635641022 L 331.6222595989687 33.49316134478163 L 332.6896590679138 33.291769433343426 L 333.7487772748158 33.101456539038125 L 334.79398296148526 32.91126674492321 L 335.7996594240023 32.70987483348501 L 336.8372463495922 32.51956193917971 L 337.8580499174413 32.34057426238805 L 338.85456178329724 32.15026136808275 L 339.8764695194188 31.982352708424003 L 340.9616460975498 31.848173500925448 L 341.9635683879406 31.7250733105598 L 342.9906657149425 31.601973120194145 L 343.9978880130409 31.478872929828498 L 345.0099686515379 31.366851756595743 L 346.0104555231746 31.277357918199904 L 347.05367370695376 31.1766619624808 L 348.0519522420456 31.08716812408499 L 349.13227047977796 31.00875330282205 L 350.176813665484 30.9752700510426 L 351.17498178374865 30.930461581749498 L 352.22129163869056 30.863371978000238 L 353.23105352381555 30.796159274060585 L 354.23584665171467 30.740271787634583 L 355.2556564681186 30.706665435664746 L 356.2973288163164 30.65065484904838 L 357.33911158134146 30.594767362622385 L 358.35991514919056 30.549958893329283 L 359.4449813104943 30.49407140690328 L 360.5073016053863 30.426858702963628 L 361.62460948024466 30.348566981891082 L 362.7604673820796 30.25895004330488 L 363.8798731766555 30.180658322232325 L 364.97001851201236 30.10236660115978 L 366.02990963670504 30.023951779896834 L 367.04640694829175 29.945660058824288 L 368.1639356568046 29.88964947220792 L 369.2017434160489 29.844964103105184 L 370.2884658297613 29.811357751135375 L 371.37331115741057 29.788953516488824 L 372.44556896675437 29.766549281842273 L 373.5731456065461 29.721863912739536 L 374.63524506778367 29.654651208799883 L 375.715563305516 29.55395525308078 L 376.8264670043943 29.430855062715132 L 377.84848515734313 29.27414852037967 L 378.8846366641788 29.095160843588012 L 379.88136936368926 28.90484794928271 L 380.9413709052092 28.70345603784451 L 381.99165576593185 28.50206412640631 L 383.05960731901314 28.311751232101003 L 384.07102545654675 28.132763555309353 L 385.07935192291757 27.964854895650596 L 386.10092840855737 27.80814835331511 L 387.14215908944624 27.673846045626192 L 388.1797460150361 27.561947972583802 L 389.20353083722074 27.47245413418799 L 390.25116569408954 27.371758178468895 L 391.35853605449614 27.27106222274979 L 392.4187584296705 27.170366267030687 L 393.4316119859583 27.069547211121197 L 394.43353427634906 26.94644702075555 L 395.4545586778527 26.823346830389895 L 396.4543830485259 26.700246640024247 L 397.4531032509267 26.599550684305143 L 398.4884818399717 26.510056845909332 L 399.55069171803643 26.40936089019023 L 400.665349589041 26.308664934471132 L 401.66473229240523 26.252654347854737 L 402.7677963965494 26.219047995884928 L 403.79522497403303 26.17436262678219 L 404.86052652326055 26.107149922842538 L 405.86509881750516 26.028858201769985 L 406.92178785420776 25.92816224605089 L 407.9168643013096 25.816264173008527 L 409.0098804741748 25.681961865319586 L 410.0788257787013 25.525255322984123 L 411.1754857068654 25.36854878064863 L 412.2692747975213 25.200763221180267 L 413.3329200943402 25.021652444198224 L 414.3659799300131 24.820260532760024 L 415.41273145226404 24.64114975577801 L 416.48178717361776 24.450959961663067 L 417.47807820581926 24.260647067357766 L 418.4774609091835 24.07045727324285 L 419.49738114241467 23.88014437893755 L 420.6019910821402 23.701156702145894 L 421.70339893387575 23.52204592516385 L 422.73877752292077 23.343058248372202 L 423.7444539854378 23.163947471390188 L 424.77166172926695 22.962555559951987 L 425.8228299246075 22.749838431000136 L 426.91396901140956 22.51484016759209 L 427.9153392176642 22.29104402150734 L 428.9479573860281 22.078449992745874 L 429.98962973422596 21.865855963984387 L 431.00082703810506 21.65313883503253 L 432.0076076688945 21.451746923594328 L 433.0241049804812 21.239152894832863 L 434.04314187909443 21.004154631424825 L 435.0672579517608 20.757954250693523 L 436.08706776816473 20.48934963531567 L 437.1331567894522 20.20954290261455 L 438.16168953520827 19.907455035457247 L 439.37682671900274 19.582839833463005 L 440.3702469136959 19.2359434970126 L 441.4052942522592 18.86664292591565 L 442.42179156384594 18.486140237495427 L 443.46357432887095 18.060952179972475 L 444.47764247025833 17.62443890493587 L 445.5385273463962 17.17684661276636 L 446.5575642450094 16.729131220406465 L 447.56611154503474 16.281538928236962 L 448.5609671584821 15.83394663606746 L 449.57216446236123 15.386231243707591 L 450.5627138195461 14.938638951538088 L 451.58594655759447 14.479844542045292 L 452.598248029746 14.009724915038873 L 453.608009914871 13.528526270899526 L 454.6299176509926 13.058529744083472 L 455.64277120728025 12.577331099944153 L 456.65264350923246 12.096132455804813 L 457.67278457611815 11.626135928988752 L 458.6772464535355 11.167341519495992 L 459.74067091669986 10.70842400981283 L 460.85720587376755 10.283235952289878 L 461.937082444191 9.925137498516186 L 462.9239880460769 9.634128648491782 L 463.9237019999228 9.41033250240703 L 464.95742433655926 9.253625960071567 L 465.97833832123564 9.152930004352463 L 467.1083441312267 9.130525769705912 L 468.1520039823149 9.175334238999014 L 469.1397929188188 9.253625960071567 L 470.1484506356713 9.38792826776048 L 471.14960000827136 9.578118061875415 L 472.2004369531303 9.688908233204515 L 473.18977172521556 9.796990200345547 L 474.22934615369576 9.90125606158525 L 475.2948685365777 10.017831941861509 L 476.2843137254902 10.13206891852085 L 476.2843137254902 10.68601977516628 L 476.2843137254902 10.68601977516628 L 486.2843137254902 10.68601977516628" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="23" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(20,0) scale(1 1)" clip-path="none" style=""><path fill="#148613" d="M 475.2948685365777 4.017831941861509 C 483.28686853657774 4.017831941861509 483.28686853657774 16.01783194186151 475.2948685365777 16.01783194186151 C 467.3028685365777 16.01783194186151 467.3028685365777 4.017831941861509 475.2948685365777 4.017831941861509 Z" stroke="#FFFFFF" stroke-width="1" visibility="hidden"></path></g></g><g class="highcharts-legend" zIndex="7"><g zIndex="1"><g></g></g></g><g class="highcharts-axis-labels" zIndex="7"><text x="24.715686274509807" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="24.715686274509807">0</tspan></text><text x="135.13251351616742" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="135.13251351616742">1 km</tspan></text><text x="245.5493407578251" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="245.5493407578251">2 km</tspan></text><text x="355.9661679994827" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="355.9661679994827">3 km</tspan></text><text x="466.38299524114035" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="466.38299524114035">4 km</tspan></text></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;white-space:nowrap;" transform="translate(352,0)" opacity="0" visibility="hidden"><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="130" height="66" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="130" height="66" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="130" height="66" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="rgb(255,255,255)" x="0.5" y="0.5" width="130" height="66" fill-opacity="0.85" stroke="#148613" stroke-width="1" anchorX="142.78491370911206" anchorY="9.996133418782847"></rect><text x="8" y="21" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;fill:#333333;" zIndex="1"><tspan style="font-weight:bold" x="8">Elevation: 1,894 m</tspan><tspan x="8" dy="16">Distance: 4.26 km</tspan><tspan x="8" dy="16">Time: 2:04:34</tspan></text></g></svg></div></div>
+   
+
+                    </div>
+                  </div>
+                
+                  
+                    
+                    
+                      
+                        <div class="row-fluid chartLabel">
+                          <div class="span3 statsItem" id="averagePace">
+                            <h5>Average Pace</h5>
+                            <h1><span class="value">29:36</span>
+                            </h1>
+                          </div>
+                          <div class="span9">
+                              
+        
+   <script type="text/javascript">
+   (function($){
+      var activityChart;
+      var chartData;
+      var chartDataSeriesArray = [];
+      var highchartsOptions = {};
+      var xUnits = null;
+
+      activityInfoCallbacks.push(function(activityInfo)
+      {
+         if (activityInfo == null) return;
+
+         // Render activity chart
+         if (activityInfo.chartData)
+         {
+            chartData = activityInfo.chartData;
+
+            for (var seriesId in chartData.series)
+            {
+               chartData.series[seriesId].visible = true;
+               if (xUnits == null) xUnits = chartData.series[seriesId].xUnits;
+            }
+            
+            renderActivityChart();
+         }
+      });
+
+      function renderActivityChart()
+      {
+         highchartsOptions.chart =
+         {
+            renderTo: "paceChart",
+            margin: [0, 20, 30, 20],
+            zoomType: "x",
+            alignTicks: false
+         };
+
+         highchartsOptions.toolbar =
+         {
+            itemStyle: {
+               margin: "0px 0px 0px 100px"
+            }
+         };
+
+         highchartsOptions.title = {text:""};
+         highchartsOptions.credits = {enabled:false};
+         
+            highchartsOptions.legend = {
+               borderWidth: 0,
+               style: {
+                  left: "auto",
+                  right: "80px",
+                  top: "-15px",
+                  bottom: "auto"
+               },
+               itemHiddenStyle: {
+                  color: "#888"
+               }
+            };
+         highchartsOptions.series = [];
+         var seriesIndex = 0;
+         var seriesToAdd = chartData.series["ELEVATION"];
+
+         
+         
+            if (chartData.series["PACE"])
+            {
+               seriesToAdd = chartData.series["PACE"];
+               chartDataSeriesArray[seriesIndex] = seriesToAdd;
+               
+               highchartsOptions.series[seriesIndex++] = {
+                  id:   seriesToAdd.id,
+                  name: seriesToAdd.label,
+                  data: seriesToAdd.data,
+                  type: "area",
+                  color: "#26568e",
+                  fillColor: "#6094c0",
+                  yAxis: 1,
+                  visible: seriesToAdd.visible,
+                  showInLegend: false
+                  
+               };
+            }
+         
+         
+         
+         highchartsOptions.xAxis =
+         {
+            title: {
+               enabled: false
+            },
+            labels: {
+            	
+            	
+            	
+            		formatter: function() {return (this.value == 0) ? this.value : this.value + " " + xUnits;}
+            	
+            	
+            },
+            lineColor: "#99A9B9"
+         };
+         
+         highchartsOptions.yAxis =
+         [
+            {  // ELEVATION
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               startOnTick: false,
+               endOnTick: false,
+               max: (chartData.series["ELEVATION"]) ? chartData.series["ELEVATION"].maxValY + ((chartData.series["ELEVATION"].maxValY - chartData.series["ELEVATION"].minValY) * 0.15) : null,
+               min: (chartData.series["ELEVATION"]) ? chartData.series["ELEVATION"].minValY : null
+            },
+            {  // PACE
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               maxPadding: 0.15
+            },
+            {  // SPEED
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               maxPadding: 0.15
+            },
+            {  // HEARTRATE
+               gridLineWidth: 0,
+               title: {enabled: false, text: ""},
+               labels: {enabled: false},
+               maxPadding: 0.15
+            }
+         ];
+         
+         highchartsOptions.plotOptions =
+         {
+            series: {
+               marker: {
+                  enabled: false,
+                  symbol: "circle",
+                  radius: 4,
+                  states: {
+                     hover: {
+                        enabled: true
+                     }
+                  }
+               },
+               lineWidth: 3,
+               point: {
+                  events: {
+                     mouseOver: function() {if (typeof(mapController)!=='undefined' && mapController.model.map) syncMapToChartHover(this.x);}
+                  }
+               },
+               events: {
+                  mouseOut: function(event) {if (typeof(mapController)!=='undefined' && mapController.model.map) mapController.removeViewPointMarker();}
+               }
+            }
+         };
+         
+         highchartsOptions.tooltip =
+         {
+            formatter: function()
+            {
+               var pointData = chartData.pointData[this.x.toString()];
+               var timeStr = (pointData) ? "<br/>Time: " + formatTime(pointData.time / 60.0)  : "";
+               var yValStr;
+
+               if (chartDataSeriesArray[this.series.index].id == "PACE")
+               {
+                  yValStr = formatPace(this.y);
+               }
+               else if (chartDataSeriesArray[this.series.index].id == "SPEED")
+               {
+                  yValStr = Highcharts.numberFormat(this.y, 1);
+               }
+               else
+               {
+                  yValStr = Highcharts.numberFormat(this.y, 0);
+               }
+               
+               var toolTipLabel = "<b>" + this.series.name + ": " + yValStr + " "
+               					  + chartDataSeriesArray[this.series.index].yUnits + "</b><br/>";
+               
+               
+               		toolTipLabel += "Distance: " + Highcharts.numberFormat(this.x, 2) + " "
+               				   		+ chartDataSeriesArray[this.series.index].xUnits;
+               
+               
+               toolTipLabel += timeStr;
+               
+               return toolTipLabel;
+            }
+         };
+
+         if (activityChart)
+         {
+            activityChart.destroy();
+         }
+         
+         activityChart = new Highcharts.Chart(highchartsOptions);
+      }
+
+      
+      function syncMapToChartHover(distance)
+      {
+         if (mapController.model.map)
+         {
+            var distanceKey = ("d" + distanceFunctions.flooredNum(distance,3)).replace(".", "p");
+            var point = mapController.model.pointsByDistanceTraveled[distanceKey];
+            if(point)
+            {
+               mapController.showViewPointAtPoint(point);
+            }
+         }
+      }
+   }(jQuery));
+   </script>
+
+   <div id="paceChart" data-highcharts-chart="1"><div class="highcharts-container" id="highcharts-4" style="position: relative; overflow: hidden; width: 521px; height: 100px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; touch-action: none;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="521" height="100"><desc>Created with Highcharts 3.0.9</desc><defs><clipPath id="highcharts-5"><rect fill="none" x="0" y="0" width="481" height="70"></rect></clipPath></defs><rect rx="5" ry="5" fill="#FFFFFF" x="0" y="0" width="521" height="100"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"><path fill="none" d="M 24.5 70 L 24.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 134.5 70 L 134.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 245.5 70 L 245.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 355.5 70 L 355.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 465.5 70 L 465.5 75" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 20 70.5 L 501 70.5" stroke="#99A9B9" stroke-width="1" zIndex="7" visibility="visible"></path></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(20,0) scale(1 1)" clip-path="url(#highcharts-5)"><path fill="#6094c0" d="M 4.715686274509805 61.698 L 5.890742150015525 61.698 L 6.9210415650074335 61.5958 L 7.964480582441098 61.4789 L 9.077923868345973 61.3669 L 10.113412874218238 61.5076 L 11.199141536485458 61.5125 L 12.334005686875216 61.1982 L 13.42613852512245 61.2899 L 14.494531745512731 61.215 L 15.536314510537771 61.3998 L 16.60327231217391 61.593 L 17.59050916454157 61.2948 L 18.610539814600003 61.306 L 19.734362282265593 61.406800000000004 L 20.77205962468269 61.5461 L 21.778619421817645 61.5503 L 22.869648091792463 61.5685 L 23.87675997306362 61.5587 L 24.96293030263981 61.6189 L 26.08885069002299 61.7239 L 27.137810548818738 61.590900000000005 L 28.230495471202183 61.4929 L 29.366353373037118 61.8772 L 30.47582165316129 62.0991 L 31.564641986591276 62.0837 L 32.590745562148 61.985 L 33.63020957380097 61.9745 L 34.72311532983889 62.104 L 35.884479518766646 62.0697 L 36.94304564153242 62.0851 L 38.05185142069315 61.919200000000004 L 39.0867883424292 62.0172 L 40.19956912737063 61.9444 L 41.28209570164784 61.805099999999996 L 42.41541401645621 61.7393 L 43.568055276031885 61.8919 L 44.58267550155547 62.0088 L 45.63781870267675 61.985 L 46.77853494491032 61.7939 L 47.845382329719214 61.701499999999996 L 48.95584436128856 61.6882 L 50.101529360748 61.796 L 51.27183731268234 61.6364 L 52.28601587089696 61.821200000000005 L 53.370419531237275 61.8562 L 54.484525318105604 61.7659 L 55.485122606569504 61.7148 L 56.56820126498293 61.7498 L 57.589446500141015 61.7232 L 58.661593892657514 61.7575 L 59.77834968337963 61.8408 L 60.821236616677105 61.9157 L 61.84987977926038 61.9374 L 62.981762675314606 61.8506 L 64.04264755145246 61.8737 L 65.11854911609517 62.0578 L 66.16044229794745 62.1502 L 67.19504796920177 62.0963 L 68.24257240924338 61.8464 L 69.29318852044777 61.7127 L 70.3389462912535 61.6245 L 71.42423328621175 61.6091 L 72.55567451495703 61.2479 L 73.60430312327104 61.1359 L 74.67126092490717 61.3613 L 75.74020622943367 61.2059 L 76.79159525842873 61.1625 L 77.84629679224105 60.961600000000004 L 78.90011499143543 61.0792 L 80.0050561816427 61.2941 L 81.02707433459148 61.4565 L 82.02910704180952 61.6728 L 83.04306476636965 61.7344 L 84.14403095079624 62.0921 L 85.23307211788071 62.0683 L 86.38692796255602 61.8898 L 87.44527325166732 62.1453 L 88.58289782273812 62.2104 L 89.68010983503845 62.0165 L 90.69638631297069 61.7141 L 91.76798162135096 61.797399999999996 L 92.78227059639285 62.0585 L 93.87429301781283 62.1719 L 94.98508629986391 62.1201 L 96.0421065870483 61.6651 L 97.08333726793711 61.391400000000004 L 98.19280554806129 61.6441 L 99.19340283652521 61.199600000000004 L 100.25097520784578 60.9182 L 101.26780376991422 60.9875 L 102.27348023243125 61.11 L 103.28313170072894 60.8615 L 104.34236032445818 60.4527 L 105.40092644722397 59.3831 L 106.41786542611962 59.6708 L 107.52788579038 59.8997 L 108.56790188616917 59.9067 L 109.65120137823708 59.423 L 110.75216756266364 59.2067 L 111.88681087939894 59.0632 L 112.9273790593243 59.1248 L 113.9459742906286 58.7489 L 114.9921737287433 58.2645 L 115.98890642825374 57.800399999999996 L 117.02130376296324 58.0874 L 118.10195325117735 57.0864 L 119.15124436045483 56.315 L 120.16409791674253 56.763 L 121.25600992133529 57.0451 L 122.30309269406793 57.2992 L 123.36099631587025 56.9604 L 124.38135821641042 56.9583 L 125.40039511502367 57.155 L 126.42451118769006 57.6051 L 127.43460432329674 57.6982 L 128.5501455289192 57.484700000000004 L 129.63223043588744 57.9873 L 130.64177148735791 58.6803 L 131.7019938625323 58.5473 L 132.7603391516436 58.5704 L 133.8561157451898 58.5816 L 134.85847970288958 59.1745 L 135.86614366829693 59.2249 L 136.88507015008295 59.1472 L 137.92773624972594 58.9176 L 138.95284607383746 58.2785 L 140.02896847213466 58.4493 L 141.04071786014998 58.144800000000004 L 142.06604851791604 57.2369 L 143.15398551672808 56.9744 L 144.21310372363007 56.2177 L 145.2371093794692 55.4946 L 146.2416816737138 54.5916 L 147.26568732955295 53.5339 L 148.26186794492716 53.9777 L 149.39088000347311 54.702200000000005 L 150.39037312366457 55.3847 L 151.45368717000176 56.0812 L 152.46168238589084 54.761700000000005 L 153.59930695696167 55.8838 L 154.79390661088914 56.07 L 155.79593931810717 56.5292 L 156.81696371961078 57.0521 L 157.83809853794165 57.710100000000004 L 158.8711583736146 58.699200000000005 L 159.91029113478584 57.6338 L 160.9656551695616 57.9999 L 162.11829642913727 58.5452 L 163.20446675871344 58.401700000000005 L 164.20771405103113 59.4125 L 165.29156562723526 59.3964 L 166.2933775007988 59.2004 L 167.3280935888804 59.5161 L 168.33288671677948 59.8234 L 169.45825502002646 59.423 L 170.4727648287228 58.7769 L 171.512780924512 59.2452 L 172.52706989955382 58.5683 L 173.54809430105743 58.0874 L 174.57320412516899 57.903999999999996 L 175.66301821004416 57.6737 L 176.68934261925537 57.7388 L 177.67635863796855 58.3464 L 178.74751227903988 56.966 L 179.7821179502942 55.8754 L 180.84863408462138 57.2411 L 181.91967730886546 56.9058 L 183.04405186066725 57.4805 L 184.07357835786846 57.4105 L 185.1240840522456 57.7276 L 186.1766876663403 57.4791 L 187.17872037355835 57.8249 L 188.28476573203804 58.1987 L 189.3692798092056 58.0524 L 190.37926252798505 58.0076 L 191.44610991279396 58.5571 L 192.50003852881557 57.3951 L 193.58444218915588 57.5715 L 194.58989781801844 57.8851 L 195.69583275967088 58.0202 L 196.76157597620735 58.0692 L 197.81274417154793 58.3149 L 198.83354773939706 57.9404 L 199.8981867876611 57.1109 L 200.96326750323414 56.2597 L 202.01576070050163 57.4868 L 203.07233932037704 56.9002 L 204.08883663196374 56.8932 L 205.12951522871637 57.4049 L 206.22319390254498 57.425200000000004 L 207.23637870931444 57.7969 L 208.25287602090114 57.8186 L 209.2976400402617 57.2502 L 210.39904789199724 56.8848 L 211.47759946049374 56.8946 L 212.52744265390743 57.0773 L 213.5981546276698 57.0556 L 214.6547332475452 58.385600000000004 L 215.80384116864914 57.5358 L 216.85545103129868 56.1736 L 217.87294209433054 55.696200000000005 L 218.98218954080025 54.5433 L 220.13803288836593 54.5118 L 221.19991151594897 56.216300000000004 L 222.28453600994376 57.085 L 223.36264591113132 58.0482 L 224.39040573909665 58.835 L 225.44477602242722 59.1101 L 226.546735958299 58.3394 L 227.60552291471924 59.2277 L 228.6216889758242 60.1482 L 229.7160301506163 60.2714 L 230.7148607698443 60.6452 L 231.78822274746048 60.7838 L 232.90630354010946 60.4513 L 233.97359259222736 60.3113 L 235.07853378243462 59.7912 L 236.11490612292482 58.7006 L 237.1971014467203 57.5407 L 238.23468837231013 56.650999999999996 L 239.27360029982694 55.9237 L 240.3154934816792 55.1194 L 241.41425132956095 53.699799999999996 L 242.48452163601434 52.1248 L 243.49041893218586 49.511 L 244.51862042746018 47.8534 L 245.5427365001265 43.922200000000004 L 246.59799011807505 44.4724 L 247.6022311618379 45.662400000000005 L 248.66797437837437 47.1415 L 249.70556130396426 49.7434 L 250.70560650829194 50.466499999999996 L 251.7710184743467 49.3052 L 252.76289283345852 51.2239 L 253.8472964937988 52.2928 L 254.8456854457179 53.186 L 255.84219731157387 53.375 L 256.836059173576 54.644800000000004 L 257.84261897071093 54.308099999999996 L 258.8509454370818 54.3347 L 259.9055365540669 54.1107 L 260.95074224073636 52.7093 L 261.9892125009442 52.0646 L 263.02878692942437 51.8861 L 264.1012655724226 50.7563 L 265.1219587234445 50.751400000000004 L 266.13039560664254 50.869 L 267.20099716357765 50.0955 L 268.2672924642504 49.335300000000004 L 269.3822815857366 48.569500000000005 L 270.4740831735021 49.7798 L 271.47821380043774 48.8005 L 272.49117777355275 50.3482 L 273.5008292418504 49.661500000000004 L 274.5550891083538 51.4703 L 275.5560176472994 51.7216 L 276.61833794219143 52.5406 L 277.62268940278153 52.4041 L 278.67319509715867 53.109700000000004 L 279.75605292191756 52.4328 L 280.8385794961948 52.6869 L 281.92099565364475 51.9386 L 282.95703674365325 52.4846 L 284.01725911882767 50.6632 L 285.0134397342019 51.828 L 286.0490391569014 50.5547 L 287.07094689302295 49.259699999999995 L 288.1064358988952 46.4821 L 289.2164562631556 46.108999999999995 L 290.28595365181826 46.0432 L 291.28069884843836 45.5889 L 292.3065815903406 44.259600000000006 L 293.3367705885053 44.18470000000001 L 294.35105956354715 45.3334 L 295.38687981990114 47.6007 L 296.4174000685475 47.2584 L 297.47353702111394 47.264 L 298.46607388118923 48.0382 L 299.4960420456994 47.3074 L 300.5223664549106 47.3438 L 301.5863430022112 47.8149 L 302.5878236252931 48.629000000000005 L 303.5845563248035 50.0479 L 304.6239099196293 50.38250000000001 L 305.65078641297663 50.0248 L 306.66386080291886 49.8855 L 307.7197769218308 49.3395 L 308.7224721300123 49.5775 L 309.79969869658197 50.155 L 310.8007376523548 52.1766 L 311.8281662298384 51.8595 L 312.8358301952458 52.2984 L 313.8925192319485 53.3939 L 314.9347436642825 53.803399999999996 L 315.93235969841083 54.2304 L 317.00737792843563 54.8051 L 318.0769857339256 55.2335 L 319.0813371945157 55.993 L 320.0952949190758 56.4774 L 321.18875275924995 56.6769 L 322.2652064080289 57.078 L 323.31604335288773 57.1382 L 324.3159781403882 56.9401 L 325.32364210579556 57.0934 L 326.34853109625266 57.1326 L 327.41350139499843 56.8421 L 328.4115590964357 56.4991 L 329.4597460374408 55.9181 L 330.5794830824984 55.1495 L 331.6222595989687 54.9577 L 332.6896590679138 54.4705 L 333.7487772748158 53.3442 L 334.79398296148526 52.025400000000005 L 335.7996594240023 52.4251 L 336.8372463495922 50.580600000000004 L 337.8580499174413 49.735 L 338.85456178329724 50.428700000000006 L 339.8764695194188 49.1764 L 340.9616460975498 51.6215 L 341.9635683879406 53.1146 L 342.9906657149425 53.3337 L 343.9978880130409 53.8153 L 345.0099686515379 54.2381 L 346.0104555231746 56.2037 L 347.05367370695376 56.2877 L 348.0519522420456 57.4588 L 349.13227047977796 57.7423 L 350.176813665484 57.6737 L 351.17498178374865 58.527 L 352.22129163869056 57.47 L 353.23105352381555 57.039500000000004 L 354.23584665171467 57.5519 L 355.2556564681186 58.1084 L 356.2973288163164 57.334199999999996 L 357.33911158134146 57.5519 L 358.35991514919056 57.9257 L 359.4449813104943 57.5512 L 360.5073016053863 56.7896 L 361.62460948024466 56.8785 L 362.7604673820796 56.2625 L 363.8798731766555 57.2124 L 364.97001851201236 57.4462 L 366.02990963670504 57.9341 L 367.04640694829175 57.3496 L 368.1639356568046 58.9841 L 369.2017434160489 58.485 L 370.2884658297613 57.8634 L 371.37331115741057 57.614200000000004 L 372.44556896675437 58.1014 L 373.5731456065461 58.0412 L 374.63524506778367 57.9138 L 375.715563305516 57.7143 L 376.8264670043943 57.1963 L 377.84848515734313 56.1428 L 378.8846366641788 55.7977 L 379.88136936368926 54.0274 L 380.9413709052092 53.781 L 381.99165576593185 54.1002 L 383.05960731901314 55.1467 L 384.07102545654675 55.4617 L 385.07935192291757 55.8999 L 386.10092840855737 56.7875 L 387.14215908944624 56.9093 L 388.1797460150361 57.2831 L 389.20353083722074 57.1249 L 390.25116569408954 57.3566 L 391.35853605449614 56.985600000000005 L 392.4187584296705 56.5642 L 393.4316119859583 56.4578 L 394.43353427634906 54.6987 L 395.4545586778527 54.495000000000005 L 396.4543830485259 54.929 L 397.4531032509267 55.3476 L 398.4884818399717 55.4708 L 399.55069171803643 56.1596 L 400.665349589041 56.7105 L 401.66473229240523 56.7525 L 402.7677963965494 56.7245 L 403.79522497403303 57.117900000000006 L 404.86052652326055 57.3538 L 405.86509881750516 58.214800000000004 L 406.92178785420776 58.4073 L 407.9168643013096 57.7962 L 409.0098804741748 57.704499999999996 L 410.0788257787013 57.7241 L 411.1754857068654 57.3363 L 412.2692747975213 57.1606 L 413.3329200943402 56.0161 L 414.3659799300131 56.198100000000004 L 415.41273145226404 56.1113 L 416.48178717361776 55.5758 L 417.47807820581926 55.3406 L 418.4774609091835 54.7477 L 419.49738114241467 54.080600000000004 L 420.6019910821402 52.4811 L 421.70339893387575 50.156400000000005 L 422.73877752292077 47.984300000000005 L 423.7444539854378 45.1339 L 424.77166172926695 46.914 L 425.8228299246075 46.4303 L 426.91396901140956 43.474900000000005 L 427.9153392176642 41.9083 L 428.9479573860281 37.699200000000005 L 429.98962973422596 32.6298 L 431.00082703810506 31.328500000000005 L 432.0076076688945 28.035700000000006 L 433.0241049804812 26.695200000000007 L 434.04314187909443 29.853600000000007 L 435.0672579517608 28.8596 L 436.08706776816473 25.581500000000005 L 437.1331567894522 24.3012 L 438.16168953520827 24.050600000000003 L 439.37682671900274 22.7584 L 440.3702469136959 25.704 L 441.4052942522592 28.079100000000004 L 442.42179156384594 28.1477 L 443.46357432887095 29.277500000000003 L 444.47764247025833 31.1094 L 445.5385273463962 29.469299999999997 L 446.5575642450094 31.6995 L 447.56611154503474 33.1807 L 448.5609671584821 32.2182 L 449.57216446236123 33.642 L 450.5627138195461 32.9637 L 451.58594655759447 30.03 L 452.598248029746 34.316100000000006 L 453.608009914871 32.7978 L 454.6299176509926 30.427600000000005 L 455.64277120728025 30.829400000000007 L 456.65264350923246 32.475100000000005 L 457.67278457611815 32.804100000000005 L 458.6772464535355 31.8444 L 459.74067091669986 34.622 L 460.85720587376755 36.5267 L 461.937082444191 39.366600000000005 L 462.9239880460769 39.3099 L 463.9237019999228 35.2261 L 464.95742433655926 35.2674 L 465.97833832123564 36.0633 L 467.1083441312267 34.232800000000005 L 468.1520039823149 30.3331 L 469.1397929188188 28.2975 L 470.1484506356713 29.185800000000008 L 471.14960000827136 30.039099999999998 L 472.2004369531303 22.898400000000002 L 473.18977172521556 15.883700000000005 L 474.22934615369576 16.9869 L 475.2948685365777 15.140300000000003 L 476.2843137254902 17.881500000000003 L 476.2843137254902 21.035700000000006 L 476.2843137254902 21.035700000000006 L 476.2843137254902 70 L 4.715686274509805 70" zIndex="0"></path><path fill="none" d="M 4.715686274509805 61.698 L 5.890742150015525 61.698 L 6.9210415650074335 61.5958 L 7.964480582441098 61.4789 L 9.077923868345973 61.3669 L 10.113412874218238 61.5076 L 11.199141536485458 61.5125 L 12.334005686875216 61.1982 L 13.42613852512245 61.2899 L 14.494531745512731 61.215 L 15.536314510537771 61.3998 L 16.60327231217391 61.593 L 17.59050916454157 61.2948 L 18.610539814600003 61.306 L 19.734362282265593 61.406800000000004 L 20.77205962468269 61.5461 L 21.778619421817645 61.5503 L 22.869648091792463 61.5685 L 23.87675997306362 61.5587 L 24.96293030263981 61.6189 L 26.08885069002299 61.7239 L 27.137810548818738 61.590900000000005 L 28.230495471202183 61.4929 L 29.366353373037118 61.8772 L 30.47582165316129 62.0991 L 31.564641986591276 62.0837 L 32.590745562148 61.985 L 33.63020957380097 61.9745 L 34.72311532983889 62.104 L 35.884479518766646 62.0697 L 36.94304564153242 62.0851 L 38.05185142069315 61.919200000000004 L 39.0867883424292 62.0172 L 40.19956912737063 61.9444 L 41.28209570164784 61.805099999999996 L 42.41541401645621 61.7393 L 43.568055276031885 61.8919 L 44.58267550155547 62.0088 L 45.63781870267675 61.985 L 46.77853494491032 61.7939 L 47.845382329719214 61.701499999999996 L 48.95584436128856 61.6882 L 50.101529360748 61.796 L 51.27183731268234 61.6364 L 52.28601587089696 61.821200000000005 L 53.370419531237275 61.8562 L 54.484525318105604 61.7659 L 55.485122606569504 61.7148 L 56.56820126498293 61.7498 L 57.589446500141015 61.7232 L 58.661593892657514 61.7575 L 59.77834968337963 61.8408 L 60.821236616677105 61.9157 L 61.84987977926038 61.9374 L 62.981762675314606 61.8506 L 64.04264755145246 61.8737 L 65.11854911609517 62.0578 L 66.16044229794745 62.1502 L 67.19504796920177 62.0963 L 68.24257240924338 61.8464 L 69.29318852044777 61.7127 L 70.3389462912535 61.6245 L 71.42423328621175 61.6091 L 72.55567451495703 61.2479 L 73.60430312327104 61.1359 L 74.67126092490717 61.3613 L 75.74020622943367 61.2059 L 76.79159525842873 61.1625 L 77.84629679224105 60.961600000000004 L 78.90011499143543 61.0792 L 80.0050561816427 61.2941 L 81.02707433459148 61.4565 L 82.02910704180952 61.6728 L 83.04306476636965 61.7344 L 84.14403095079624 62.0921 L 85.23307211788071 62.0683 L 86.38692796255602 61.8898 L 87.44527325166732 62.1453 L 88.58289782273812 62.2104 L 89.68010983503845 62.0165 L 90.69638631297069 61.7141 L 91.76798162135096 61.797399999999996 L 92.78227059639285 62.0585 L 93.87429301781283 62.1719 L 94.98508629986391 62.1201 L 96.0421065870483 61.6651 L 97.08333726793711 61.391400000000004 L 98.19280554806129 61.6441 L 99.19340283652521 61.199600000000004 L 100.25097520784578 60.9182 L 101.26780376991422 60.9875 L 102.27348023243125 61.11 L 103.28313170072894 60.8615 L 104.34236032445818 60.4527 L 105.40092644722397 59.3831 L 106.41786542611962 59.6708 L 107.52788579038 59.8997 L 108.56790188616917 59.9067 L 109.65120137823708 59.423 L 110.75216756266364 59.2067 L 111.88681087939894 59.0632 L 112.9273790593243 59.1248 L 113.9459742906286 58.7489 L 114.9921737287433 58.2645 L 115.98890642825374 57.800399999999996 L 117.02130376296324 58.0874 L 118.10195325117735 57.0864 L 119.15124436045483 56.315 L 120.16409791674253 56.763 L 121.25600992133529 57.0451 L 122.30309269406793 57.2992 L 123.36099631587025 56.9604 L 124.38135821641042 56.9583 L 125.40039511502367 57.155 L 126.42451118769006 57.6051 L 127.43460432329674 57.6982 L 128.5501455289192 57.484700000000004 L 129.63223043588744 57.9873 L 130.64177148735791 58.6803 L 131.7019938625323 58.5473 L 132.7603391516436 58.5704 L 133.8561157451898 58.5816 L 134.85847970288958 59.1745 L 135.86614366829693 59.2249 L 136.88507015008295 59.1472 L 137.92773624972594 58.9176 L 138.95284607383746 58.2785 L 140.02896847213466 58.4493 L 141.04071786014998 58.144800000000004 L 142.06604851791604 57.2369 L 143.15398551672808 56.9744 L 144.21310372363007 56.2177 L 145.2371093794692 55.4946 L 146.2416816737138 54.5916 L 147.26568732955295 53.5339 L 148.26186794492716 53.9777 L 149.39088000347311 54.702200000000005 L 150.39037312366457 55.3847 L 151.45368717000176 56.0812 L 152.46168238589084 54.761700000000005 L 153.59930695696167 55.8838 L 154.79390661088914 56.07 L 155.79593931810717 56.5292 L 156.81696371961078 57.0521 L 157.83809853794165 57.710100000000004 L 158.8711583736146 58.699200000000005 L 159.91029113478584 57.6338 L 160.9656551695616 57.9999 L 162.11829642913727 58.5452 L 163.20446675871344 58.401700000000005 L 164.20771405103113 59.4125 L 165.29156562723526 59.3964 L 166.2933775007988 59.2004 L 167.3280935888804 59.5161 L 168.33288671677948 59.8234 L 169.45825502002646 59.423 L 170.4727648287228 58.7769 L 171.512780924512 59.2452 L 172.52706989955382 58.5683 L 173.54809430105743 58.0874 L 174.57320412516899 57.903999999999996 L 175.66301821004416 57.6737 L 176.68934261925537 57.7388 L 177.67635863796855 58.3464 L 178.74751227903988 56.966 L 179.7821179502942 55.8754 L 180.84863408462138 57.2411 L 181.91967730886546 56.9058 L 183.04405186066725 57.4805 L 184.07357835786846 57.4105 L 185.1240840522456 57.7276 L 186.1766876663403 57.4791 L 187.17872037355835 57.8249 L 188.28476573203804 58.1987 L 189.3692798092056 58.0524 L 190.37926252798505 58.0076 L 191.44610991279396 58.5571 L 192.50003852881557 57.3951 L 193.58444218915588 57.5715 L 194.58989781801844 57.8851 L 195.69583275967088 58.0202 L 196.76157597620735 58.0692 L 197.81274417154793 58.3149 L 198.83354773939706 57.9404 L 199.8981867876611 57.1109 L 200.96326750323414 56.2597 L 202.01576070050163 57.4868 L 203.07233932037704 56.9002 L 204.08883663196374 56.8932 L 205.12951522871637 57.4049 L 206.22319390254498 57.425200000000004 L 207.23637870931444 57.7969 L 208.25287602090114 57.8186 L 209.2976400402617 57.2502 L 210.39904789199724 56.8848 L 211.47759946049374 56.8946 L 212.52744265390743 57.0773 L 213.5981546276698 57.0556 L 214.6547332475452 58.385600000000004 L 215.80384116864914 57.5358 L 216.85545103129868 56.1736 L 217.87294209433054 55.696200000000005 L 218.98218954080025 54.5433 L 220.13803288836593 54.5118 L 221.19991151594897 56.216300000000004 L 222.28453600994376 57.085 L 223.36264591113132 58.0482 L 224.39040573909665 58.835 L 225.44477602242722 59.1101 L 226.546735958299 58.3394 L 227.60552291471924 59.2277 L 228.6216889758242 60.1482 L 229.7160301506163 60.2714 L 230.7148607698443 60.6452 L 231.78822274746048 60.7838 L 232.90630354010946 60.4513 L 233.97359259222736 60.3113 L 235.07853378243462 59.7912 L 236.11490612292482 58.7006 L 237.1971014467203 57.5407 L 238.23468837231013 56.650999999999996 L 239.27360029982694 55.9237 L 240.3154934816792 55.1194 L 241.41425132956095 53.699799999999996 L 242.48452163601434 52.1248 L 243.49041893218586 49.511 L 244.51862042746018 47.8534 L 245.5427365001265 43.922200000000004 L 246.59799011807505 44.4724 L 247.6022311618379 45.662400000000005 L 248.66797437837437 47.1415 L 249.70556130396426 49.7434 L 250.70560650829194 50.466499999999996 L 251.7710184743467 49.3052 L 252.76289283345852 51.2239 L 253.8472964937988 52.2928 L 254.8456854457179 53.186 L 255.84219731157387 53.375 L 256.836059173576 54.644800000000004 L 257.84261897071093 54.308099999999996 L 258.8509454370818 54.3347 L 259.9055365540669 54.1107 L 260.95074224073636 52.7093 L 261.9892125009442 52.0646 L 263.02878692942437 51.8861 L 264.1012655724226 50.7563 L 265.1219587234445 50.751400000000004 L 266.13039560664254 50.869 L 267.20099716357765 50.0955 L 268.2672924642504 49.335300000000004 L 269.3822815857366 48.569500000000005 L 270.4740831735021 49.7798 L 271.47821380043774 48.8005 L 272.49117777355275 50.3482 L 273.5008292418504 49.661500000000004 L 274.5550891083538 51.4703 L 275.5560176472994 51.7216 L 276.61833794219143 52.5406 L 277.62268940278153 52.4041 L 278.67319509715867 53.109700000000004 L 279.75605292191756 52.4328 L 280.8385794961948 52.6869 L 281.92099565364475 51.9386 L 282.95703674365325 52.4846 L 284.01725911882767 50.6632 L 285.0134397342019 51.828 L 286.0490391569014 50.5547 L 287.07094689302295 49.259699999999995 L 288.1064358988952 46.4821 L 289.2164562631556 46.108999999999995 L 290.28595365181826 46.0432 L 291.28069884843836 45.5889 L 292.3065815903406 44.259600000000006 L 293.3367705885053 44.18470000000001 L 294.35105956354715 45.3334 L 295.38687981990114 47.6007 L 296.4174000685475 47.2584 L 297.47353702111394 47.264 L 298.46607388118923 48.0382 L 299.4960420456994 47.3074 L 300.5223664549106 47.3438 L 301.5863430022112 47.8149 L 302.5878236252931 48.629000000000005 L 303.5845563248035 50.0479 L 304.6239099196293 50.38250000000001 L 305.65078641297663 50.0248 L 306.66386080291886 49.8855 L 307.7197769218308 49.3395 L 308.7224721300123 49.5775 L 309.79969869658197 50.155 L 310.8007376523548 52.1766 L 311.8281662298384 51.8595 L 312.8358301952458 52.2984 L 313.8925192319485 53.3939 L 314.9347436642825 53.803399999999996 L 315.93235969841083 54.2304 L 317.00737792843563 54.8051 L 318.0769857339256 55.2335 L 319.0813371945157 55.993 L 320.0952949190758 56.4774 L 321.18875275924995 56.6769 L 322.2652064080289 57.078 L 323.31604335288773 57.1382 L 324.3159781403882 56.9401 L 325.32364210579556 57.0934 L 326.34853109625266 57.1326 L 327.41350139499843 56.8421 L 328.4115590964357 56.4991 L 329.4597460374408 55.9181 L 330.5794830824984 55.1495 L 331.6222595989687 54.9577 L 332.6896590679138 54.4705 L 333.7487772748158 53.3442 L 334.79398296148526 52.025400000000005 L 335.7996594240023 52.4251 L 336.8372463495922 50.580600000000004 L 337.8580499174413 49.735 L 338.85456178329724 50.428700000000006 L 339.8764695194188 49.1764 L 340.9616460975498 51.6215 L 341.9635683879406 53.1146 L 342.9906657149425 53.3337 L 343.9978880130409 53.8153 L 345.0099686515379 54.2381 L 346.0104555231746 56.2037 L 347.05367370695376 56.2877 L 348.0519522420456 57.4588 L 349.13227047977796 57.7423 L 350.176813665484 57.6737 L 351.17498178374865 58.527 L 352.22129163869056 57.47 L 353.23105352381555 57.039500000000004 L 354.23584665171467 57.5519 L 355.2556564681186 58.1084 L 356.2973288163164 57.334199999999996 L 357.33911158134146 57.5519 L 358.35991514919056 57.9257 L 359.4449813104943 57.5512 L 360.5073016053863 56.7896 L 361.62460948024466 56.8785 L 362.7604673820796 56.2625 L 363.8798731766555 57.2124 L 364.97001851201236 57.4462 L 366.02990963670504 57.9341 L 367.04640694829175 57.3496 L 368.1639356568046 58.9841 L 369.2017434160489 58.485 L 370.2884658297613 57.8634 L 371.37331115741057 57.614200000000004 L 372.44556896675437 58.1014 L 373.5731456065461 58.0412 L 374.63524506778367 57.9138 L 375.715563305516 57.7143 L 376.8264670043943 57.1963 L 377.84848515734313 56.1428 L 378.8846366641788 55.7977 L 379.88136936368926 54.0274 L 380.9413709052092 53.781 L 381.99165576593185 54.1002 L 383.05960731901314 55.1467 L 384.07102545654675 55.4617 L 385.07935192291757 55.8999 L 386.10092840855737 56.7875 L 387.14215908944624 56.9093 L 388.1797460150361 57.2831 L 389.20353083722074 57.1249 L 390.25116569408954 57.3566 L 391.35853605449614 56.985600000000005 L 392.4187584296705 56.5642 L 393.4316119859583 56.4578 L 394.43353427634906 54.6987 L 395.4545586778527 54.495000000000005 L 396.4543830485259 54.929 L 397.4531032509267 55.3476 L 398.4884818399717 55.4708 L 399.55069171803643 56.1596 L 400.665349589041 56.7105 L 401.66473229240523 56.7525 L 402.7677963965494 56.7245 L 403.79522497403303 57.117900000000006 L 404.86052652326055 57.3538 L 405.86509881750516 58.214800000000004 L 406.92178785420776 58.4073 L 407.9168643013096 57.7962 L 409.0098804741748 57.704499999999996 L 410.0788257787013 57.7241 L 411.1754857068654 57.3363 L 412.2692747975213 57.1606 L 413.3329200943402 56.0161 L 414.3659799300131 56.198100000000004 L 415.41273145226404 56.1113 L 416.48178717361776 55.5758 L 417.47807820581926 55.3406 L 418.4774609091835 54.7477 L 419.49738114241467 54.080600000000004 L 420.6019910821402 52.4811 L 421.70339893387575 50.156400000000005 L 422.73877752292077 47.984300000000005 L 423.7444539854378 45.1339 L 424.77166172926695 46.914 L 425.8228299246075 46.4303 L 426.91396901140956 43.474900000000005 L 427.9153392176642 41.9083 L 428.9479573860281 37.699200000000005 L 429.98962973422596 32.6298 L 431.00082703810506 31.328500000000005 L 432.0076076688945 28.035700000000006 L 433.0241049804812 26.695200000000007 L 434.04314187909443 29.853600000000007 L 435.0672579517608 28.8596 L 436.08706776816473 25.581500000000005 L 437.1331567894522 24.3012 L 438.16168953520827 24.050600000000003 L 439.37682671900274 22.7584 L 440.3702469136959 25.704 L 441.4052942522592 28.079100000000004 L 442.42179156384594 28.1477 L 443.46357432887095 29.277500000000003 L 444.47764247025833 31.1094 L 445.5385273463962 29.469299999999997 L 446.5575642450094 31.6995 L 447.56611154503474 33.1807 L 448.5609671584821 32.2182 L 449.57216446236123 33.642 L 450.5627138195461 32.9637 L 451.58594655759447 30.03 L 452.598248029746 34.316100000000006 L 453.608009914871 32.7978 L 454.6299176509926 30.427600000000005 L 455.64277120728025 30.829400000000007 L 456.65264350923246 32.475100000000005 L 457.67278457611815 32.804100000000005 L 458.6772464535355 31.8444 L 459.74067091669986 34.622 L 460.85720587376755 36.5267 L 461.937082444191 39.366600000000005 L 462.9239880460769 39.3099 L 463.9237019999228 35.2261 L 464.95742433655926 35.2674 L 465.97833832123564 36.0633 L 467.1083441312267 34.232800000000005 L 468.1520039823149 30.3331 L 469.1397929188188 28.2975 L 470.1484506356713 29.185800000000008 L 471.14960000827136 30.039099999999998 L 472.2004369531303 22.898400000000002 L 473.18977172521556 15.883700000000005 L 474.22934615369576 16.9869 L 475.2948685365777 15.140300000000003 L 476.2843137254902 17.881500000000003 L 476.2843137254902 21.035700000000006 L 476.2843137254902 21.035700000000006" stroke="#26568e" stroke-width="3" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M -5.284313725490195 61.698 L 4.715686274509805 61.698 L 5.890742150015525 61.698 L 6.9210415650074335 61.5958 L 7.964480582441098 61.4789 L 9.077923868345973 61.3669 L 10.113412874218238 61.5076 L 11.199141536485458 61.5125 L 12.334005686875216 61.1982 L 13.42613852512245 61.2899 L 14.494531745512731 61.215 L 15.536314510537771 61.3998 L 16.60327231217391 61.593 L 17.59050916454157 61.2948 L 18.610539814600003 61.306 L 19.734362282265593 61.406800000000004 L 20.77205962468269 61.5461 L 21.778619421817645 61.5503 L 22.869648091792463 61.5685 L 23.87675997306362 61.5587 L 24.96293030263981 61.6189 L 26.08885069002299 61.7239 L 27.137810548818738 61.590900000000005 L 28.230495471202183 61.4929 L 29.366353373037118 61.8772 L 30.47582165316129 62.0991 L 31.564641986591276 62.0837 L 32.590745562148 61.985 L 33.63020957380097 61.9745 L 34.72311532983889 62.104 L 35.884479518766646 62.0697 L 36.94304564153242 62.0851 L 38.05185142069315 61.919200000000004 L 39.0867883424292 62.0172 L 40.19956912737063 61.9444 L 41.28209570164784 61.805099999999996 L 42.41541401645621 61.7393 L 43.568055276031885 61.8919 L 44.58267550155547 62.0088 L 45.63781870267675 61.985 L 46.77853494491032 61.7939 L 47.845382329719214 61.701499999999996 L 48.95584436128856 61.6882 L 50.101529360748 61.796 L 51.27183731268234 61.6364 L 52.28601587089696 61.821200000000005 L 53.370419531237275 61.8562 L 54.484525318105604 61.7659 L 55.485122606569504 61.7148 L 56.56820126498293 61.7498 L 57.589446500141015 61.7232 L 58.661593892657514 61.7575 L 59.77834968337963 61.8408 L 60.821236616677105 61.9157 L 61.84987977926038 61.9374 L 62.981762675314606 61.8506 L 64.04264755145246 61.8737 L 65.11854911609517 62.0578 L 66.16044229794745 62.1502 L 67.19504796920177 62.0963 L 68.24257240924338 61.8464 L 69.29318852044777 61.7127 L 70.3389462912535 61.6245 L 71.42423328621175 61.6091 L 72.55567451495703 61.2479 L 73.60430312327104 61.1359 L 74.67126092490717 61.3613 L 75.74020622943367 61.2059 L 76.79159525842873 61.1625 L 77.84629679224105 60.961600000000004 L 78.90011499143543 61.0792 L 80.0050561816427 61.2941 L 81.02707433459148 61.4565 L 82.02910704180952 61.6728 L 83.04306476636965 61.7344 L 84.14403095079624 62.0921 L 85.23307211788071 62.0683 L 86.38692796255602 61.8898 L 87.44527325166732 62.1453 L 88.58289782273812 62.2104 L 89.68010983503845 62.0165 L 90.69638631297069 61.7141 L 91.76798162135096 61.797399999999996 L 92.78227059639285 62.0585 L 93.87429301781283 62.1719 L 94.98508629986391 62.1201 L 96.0421065870483 61.6651 L 97.08333726793711 61.391400000000004 L 98.19280554806129 61.6441 L 99.19340283652521 61.199600000000004 L 100.25097520784578 60.9182 L 101.26780376991422 60.9875 L 102.27348023243125 61.11 L 103.28313170072894 60.8615 L 104.34236032445818 60.4527 L 105.40092644722397 59.3831 L 106.41786542611962 59.6708 L 107.52788579038 59.8997 L 108.56790188616917 59.9067 L 109.65120137823708 59.423 L 110.75216756266364 59.2067 L 111.88681087939894 59.0632 L 112.9273790593243 59.1248 L 113.9459742906286 58.7489 L 114.9921737287433 58.2645 L 115.98890642825374 57.800399999999996 L 117.02130376296324 58.0874 L 118.10195325117735 57.0864 L 119.15124436045483 56.315 L 120.16409791674253 56.763 L 121.25600992133529 57.0451 L 122.30309269406793 57.2992 L 123.36099631587025 56.9604 L 124.38135821641042 56.9583 L 125.40039511502367 57.155 L 126.42451118769006 57.6051 L 127.43460432329674 57.6982 L 128.5501455289192 57.484700000000004 L 129.63223043588744 57.9873 L 130.64177148735791 58.6803 L 131.7019938625323 58.5473 L 132.7603391516436 58.5704 L 133.8561157451898 58.5816 L 134.85847970288958 59.1745 L 135.86614366829693 59.2249 L 136.88507015008295 59.1472 L 137.92773624972594 58.9176 L 138.95284607383746 58.2785 L 140.02896847213466 58.4493 L 141.04071786014998 58.144800000000004 L 142.06604851791604 57.2369 L 143.15398551672808 56.9744 L 144.21310372363007 56.2177 L 145.2371093794692 55.4946 L 146.2416816737138 54.5916 L 147.26568732955295 53.5339 L 148.26186794492716 53.9777 L 149.39088000347311 54.702200000000005 L 150.39037312366457 55.3847 L 151.45368717000176 56.0812 L 152.46168238589084 54.761700000000005 L 153.59930695696167 55.8838 L 154.79390661088914 56.07 L 155.79593931810717 56.5292 L 156.81696371961078 57.0521 L 157.83809853794165 57.710100000000004 L 158.8711583736146 58.699200000000005 L 159.91029113478584 57.6338 L 160.9656551695616 57.9999 L 162.11829642913727 58.5452 L 163.20446675871344 58.401700000000005 L 164.20771405103113 59.4125 L 165.29156562723526 59.3964 L 166.2933775007988 59.2004 L 167.3280935888804 59.5161 L 168.33288671677948 59.8234 L 169.45825502002646 59.423 L 170.4727648287228 58.7769 L 171.512780924512 59.2452 L 172.52706989955382 58.5683 L 173.54809430105743 58.0874 L 174.57320412516899 57.903999999999996 L 175.66301821004416 57.6737 L 176.68934261925537 57.7388 L 177.67635863796855 58.3464 L 178.74751227903988 56.966 L 179.7821179502942 55.8754 L 180.84863408462138 57.2411 L 181.91967730886546 56.9058 L 183.04405186066725 57.4805 L 184.07357835786846 57.4105 L 185.1240840522456 57.7276 L 186.1766876663403 57.4791 L 187.17872037355835 57.8249 L 188.28476573203804 58.1987 L 189.3692798092056 58.0524 L 190.37926252798505 58.0076 L 191.44610991279396 58.5571 L 192.50003852881557 57.3951 L 193.58444218915588 57.5715 L 194.58989781801844 57.8851 L 195.69583275967088 58.0202 L 196.76157597620735 58.0692 L 197.81274417154793 58.3149 L 198.83354773939706 57.9404 L 199.8981867876611 57.1109 L 200.96326750323414 56.2597 L 202.01576070050163 57.4868 L 203.07233932037704 56.9002 L 204.08883663196374 56.8932 L 205.12951522871637 57.4049 L 206.22319390254498 57.425200000000004 L 207.23637870931444 57.7969 L 208.25287602090114 57.8186 L 209.2976400402617 57.2502 L 210.39904789199724 56.8848 L 211.47759946049374 56.8946 L 212.52744265390743 57.0773 L 213.5981546276698 57.0556 L 214.6547332475452 58.385600000000004 L 215.80384116864914 57.5358 L 216.85545103129868 56.1736 L 217.87294209433054 55.696200000000005 L 218.98218954080025 54.5433 L 220.13803288836593 54.5118 L 221.19991151594897 56.216300000000004 L 222.28453600994376 57.085 L 223.36264591113132 58.0482 L 224.39040573909665 58.835 L 225.44477602242722 59.1101 L 226.546735958299 58.3394 L 227.60552291471924 59.2277 L 228.6216889758242 60.1482 L 229.7160301506163 60.2714 L 230.7148607698443 60.6452 L 231.78822274746048 60.7838 L 232.90630354010946 60.4513 L 233.97359259222736 60.3113 L 235.07853378243462 59.7912 L 236.11490612292482 58.7006 L 237.1971014467203 57.5407 L 238.23468837231013 56.650999999999996 L 239.27360029982694 55.9237 L 240.3154934816792 55.1194 L 241.41425132956095 53.699799999999996 L 242.48452163601434 52.1248 L 243.49041893218586 49.511 L 244.51862042746018 47.8534 L 245.5427365001265 43.922200000000004 L 246.59799011807505 44.4724 L 247.6022311618379 45.662400000000005 L 248.66797437837437 47.1415 L 249.70556130396426 49.7434 L 250.70560650829194 50.466499999999996 L 251.7710184743467 49.3052 L 252.76289283345852 51.2239 L 253.8472964937988 52.2928 L 254.8456854457179 53.186 L 255.84219731157387 53.375 L 256.836059173576 54.644800000000004 L 257.84261897071093 54.308099999999996 L 258.8509454370818 54.3347 L 259.9055365540669 54.1107 L 260.95074224073636 52.7093 L 261.9892125009442 52.0646 L 263.02878692942437 51.8861 L 264.1012655724226 50.7563 L 265.1219587234445 50.751400000000004 L 266.13039560664254 50.869 L 267.20099716357765 50.0955 L 268.2672924642504 49.335300000000004 L 269.3822815857366 48.569500000000005 L 270.4740831735021 49.7798 L 271.47821380043774 48.8005 L 272.49117777355275 50.3482 L 273.5008292418504 49.661500000000004 L 274.5550891083538 51.4703 L 275.5560176472994 51.7216 L 276.61833794219143 52.5406 L 277.62268940278153 52.4041 L 278.67319509715867 53.109700000000004 L 279.75605292191756 52.4328 L 280.8385794961948 52.6869 L 281.92099565364475 51.9386 L 282.95703674365325 52.4846 L 284.01725911882767 50.6632 L 285.0134397342019 51.828 L 286.0490391569014 50.5547 L 287.07094689302295 49.259699999999995 L 288.1064358988952 46.4821 L 289.2164562631556 46.108999999999995 L 290.28595365181826 46.0432 L 291.28069884843836 45.5889 L 292.3065815903406 44.259600000000006 L 293.3367705885053 44.18470000000001 L 294.35105956354715 45.3334 L 295.38687981990114 47.6007 L 296.4174000685475 47.2584 L 297.47353702111394 47.264 L 298.46607388118923 48.0382 L 299.4960420456994 47.3074 L 300.5223664549106 47.3438 L 301.5863430022112 47.8149 L 302.5878236252931 48.629000000000005 L 303.5845563248035 50.0479 L 304.6239099196293 50.38250000000001 L 305.65078641297663 50.0248 L 306.66386080291886 49.8855 L 307.7197769218308 49.3395 L 308.7224721300123 49.5775 L 309.79969869658197 50.155 L 310.8007376523548 52.1766 L 311.8281662298384 51.8595 L 312.8358301952458 52.2984 L 313.8925192319485 53.3939 L 314.9347436642825 53.803399999999996 L 315.93235969841083 54.2304 L 317.00737792843563 54.8051 L 318.0769857339256 55.2335 L 319.0813371945157 55.993 L 320.0952949190758 56.4774 L 321.18875275924995 56.6769 L 322.2652064080289 57.078 L 323.31604335288773 57.1382 L 324.3159781403882 56.9401 L 325.32364210579556 57.0934 L 326.34853109625266 57.1326 L 327.41350139499843 56.8421 L 328.4115590964357 56.4991 L 329.4597460374408 55.9181 L 330.5794830824984 55.1495 L 331.6222595989687 54.9577 L 332.6896590679138 54.4705 L 333.7487772748158 53.3442 L 334.79398296148526 52.025400000000005 L 335.7996594240023 52.4251 L 336.8372463495922 50.580600000000004 L 337.8580499174413 49.735 L 338.85456178329724 50.428700000000006 L 339.8764695194188 49.1764 L 340.9616460975498 51.6215 L 341.9635683879406 53.1146 L 342.9906657149425 53.3337 L 343.9978880130409 53.8153 L 345.0099686515379 54.2381 L 346.0104555231746 56.2037 L 347.05367370695376 56.2877 L 348.0519522420456 57.4588 L 349.13227047977796 57.7423 L 350.176813665484 57.6737 L 351.17498178374865 58.527 L 352.22129163869056 57.47 L 353.23105352381555 57.039500000000004 L 354.23584665171467 57.5519 L 355.2556564681186 58.1084 L 356.2973288163164 57.334199999999996 L 357.33911158134146 57.5519 L 358.35991514919056 57.9257 L 359.4449813104943 57.5512 L 360.5073016053863 56.7896 L 361.62460948024466 56.8785 L 362.7604673820796 56.2625 L 363.8798731766555 57.2124 L 364.97001851201236 57.4462 L 366.02990963670504 57.9341 L 367.04640694829175 57.3496 L 368.1639356568046 58.9841 L 369.2017434160489 58.485 L 370.2884658297613 57.8634 L 371.37331115741057 57.614200000000004 L 372.44556896675437 58.1014 L 373.5731456065461 58.0412 L 374.63524506778367 57.9138 L 375.715563305516 57.7143 L 376.8264670043943 57.1963 L 377.84848515734313 56.1428 L 378.8846366641788 55.7977 L 379.88136936368926 54.0274 L 380.9413709052092 53.781 L 381.99165576593185 54.1002 L 383.05960731901314 55.1467 L 384.07102545654675 55.4617 L 385.07935192291757 55.8999 L 386.10092840855737 56.7875 L 387.14215908944624 56.9093 L 388.1797460150361 57.2831 L 389.20353083722074 57.1249 L 390.25116569408954 57.3566 L 391.35853605449614 56.985600000000005 L 392.4187584296705 56.5642 L 393.4316119859583 56.4578 L 394.43353427634906 54.6987 L 395.4545586778527 54.495000000000005 L 396.4543830485259 54.929 L 397.4531032509267 55.3476 L 398.4884818399717 55.4708 L 399.55069171803643 56.1596 L 400.665349589041 56.7105 L 401.66473229240523 56.7525 L 402.7677963965494 56.7245 L 403.79522497403303 57.117900000000006 L 404.86052652326055 57.3538 L 405.86509881750516 58.214800000000004 L 406.92178785420776 58.4073 L 407.9168643013096 57.7962 L 409.0098804741748 57.704499999999996 L 410.0788257787013 57.7241 L 411.1754857068654 57.3363 L 412.2692747975213 57.1606 L 413.3329200943402 56.0161 L 414.3659799300131 56.198100000000004 L 415.41273145226404 56.1113 L 416.48178717361776 55.5758 L 417.47807820581926 55.3406 L 418.4774609091835 54.7477 L 419.49738114241467 54.080600000000004 L 420.6019910821402 52.4811 L 421.70339893387575 50.156400000000005 L 422.73877752292077 47.984300000000005 L 423.7444539854378 45.1339 L 424.77166172926695 46.914 L 425.8228299246075 46.4303 L 426.91396901140956 43.474900000000005 L 427.9153392176642 41.9083 L 428.9479573860281 37.699200000000005 L 429.98962973422596 32.6298 L 431.00082703810506 31.328500000000005 L 432.0076076688945 28.035700000000006 L 433.0241049804812 26.695200000000007 L 434.04314187909443 29.853600000000007 L 435.0672579517608 28.8596 L 436.08706776816473 25.581500000000005 L 437.1331567894522 24.3012 L 438.16168953520827 24.050600000000003 L 439.37682671900274 22.7584 L 440.3702469136959 25.704 L 441.4052942522592 28.079100000000004 L 442.42179156384594 28.1477 L 443.46357432887095 29.277500000000003 L 444.47764247025833 31.1094 L 445.5385273463962 29.469299999999997 L 446.5575642450094 31.6995 L 447.56611154503474 33.1807 L 448.5609671584821 32.2182 L 449.57216446236123 33.642 L 450.5627138195461 32.9637 L 451.58594655759447 30.03 L 452.598248029746 34.316100000000006 L 453.608009914871 32.7978 L 454.6299176509926 30.427600000000005 L 455.64277120728025 30.829400000000007 L 456.65264350923246 32.475100000000005 L 457.67278457611815 32.804100000000005 L 458.6772464535355 31.8444 L 459.74067091669986 34.622 L 460.85720587376755 36.5267 L 461.937082444191 39.366600000000005 L 462.9239880460769 39.3099 L 463.9237019999228 35.2261 L 464.95742433655926 35.2674 L 465.97833832123564 36.0633 L 467.1083441312267 34.232800000000005 L 468.1520039823149 30.3331 L 469.1397929188188 28.2975 L 470.1484506356713 29.185800000000008 L 471.14960000827136 30.039099999999998 L 472.2004369531303 22.898400000000002 L 473.18977172521556 15.883700000000005 L 474.22934615369576 16.9869 L 475.2948685365777 15.140300000000003 L 476.2843137254902 17.881500000000003 L 476.2843137254902 21.035700000000006 L 476.2843137254902 21.035700000000006 L 486.2843137254902 21.035700000000006" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="23" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(20,0) scale(1 1)" clip-path="none" style=""><path fill="#26568e" d="M 432.0076076688945 22.035700000000006 C 439.9996076688945 22.035700000000006 439.9996076688945 34.035700000000006 432.0076076688945 34.035700000000006 C 424.01560766889446 34.035700000000006 424.01560766889446 22.035700000000006 432.0076076688945 22.035700000000006 Z" stroke="#FFFFFF" stroke-width="1" visibility="hidden"></path></g></g><g class="highcharts-legend" zIndex="7"><g zIndex="1"><g></g></g></g><g class="highcharts-axis-labels" zIndex="7"><text x="24.715686274509807" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="24.715686274509807">0</tspan></text><text x="135.13251351616742" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="135.13251351616742">1 km</tspan></text><text x="245.5493407578251" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="245.5493407578251">2 km</tspan></text><text x="355.9661679994827" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="355.9661679994827">3 km</tspan></text><text x="466.38299524114035" y="84" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;fill:#666;" text-anchor="middle" opacity="1"><tspan x="466.38299524114035">4 km</tspan></text></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;white-space:nowrap;" transform="translate(318,0)" opacity="0" visibility="hidden"><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="123" height="66" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="123" height="66" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="123" height="66" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="rgb(255,255,255)" x="0.5" y="0.5" width="123" height="66" fill-opacity="0.85" stroke="#26568e" stroke-width="1" anchorX="135.34181565094713" anchorY="28.00647723400948"></rect><text x="8" y="21" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;fill:#333333;" zIndex="1"><tspan style="font-weight:bold" x="8">Pace: 59:57 / km</tspan><tspan x="8" dy="16">Distance: 3.87 km</tspan><tspan x="8" dy="16">Time: 1:34:39</tspan></text></g></svg></div></div>
+   
+
+                          </div>
+                        </div>
+                      
+                    
+                 
+              </div>
+            
+            
+            <div id="activityMedia" style="display: none;">
+				<div class="blackBox">
+					<div class="blackBox-content">
+						<div class=" jcarousel-skin-tango"><div class="jcarousel-container jcarousel-container-horizontal" style="display: block;"><div class="jcarousel-prev jcarousel-prev-horizontal jcarousel-prev-disabled jcarousel-prev-disabled-horizontal" disabled="disabled" style="display: block;"></div><div class="jcarousel-next jcarousel-next-horizontal jcarousel-next-disabled jcarousel-next-disabled-horizontal" style="display: block;" disabled="disabled"></div><div class="jcarousel-clip jcarousel-clip-horizontal"><ul id="carousel" class="jcarousel-list jcarousel-list-horizontal" style="left: 0px;"><li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal jcarousel-item-placeholder jcarousel-item-placeholder-horizontal" jcarouselindex="1" style=""></li>
+							<!-- thumbnail image list items are injected here -->
+						</ul></div></div></div>
+					</div>
+				</div>
+			</div>
+			
+
+            
+            
+            
+            <script type="text/javascript">
+               $(function(){
+                  refreshActivityPointData();
+
+                   $("#distanceSplitsToggle").click(function(){
+                       $("#trainingSplitsToggle").removeClass("active");
+                       $("#distanceSplitsToggle").addClass("active");
+                       $("#trainingSplits").fadeOut(function(){
+                           $("#trainingMeta").hide();
+                           $("#distanceSplits").fadeIn();
+                       });
+                   });
+
+                   $("#trainingSplitsToggle").click(function(){
+                       $("#trainingSplitsToggle").addClass("active");
+                       $("#distanceSplitsToggle").removeClass("active");
+                       $("#distanceSplits").fadeOut(function(){
+                           $("#trainingMeta").show();
+                           $("#trainingSplits").fadeIn();
+                       });
+                   });
+                });
+
+               function refreshActivityPointData()
+               {
+                  $.getJSON("/ajax/pointData",
+                        {tripUuid: "5362b7a0-cf90-4875-8f01-6e292308d7cb"},
+                        function(activityInfo) {
+                           if(typeof(mapController)!=='undefined') mapController.clear();
+                           $.each(activityInfoCallbacks, function(callbackIndex, callback) {
+                              callback(activityInfo);
+                           });
+                     });
+               }
+            </script>
+            
+            <div id="moreActivityInfo">
+              <div class="row-fluid">
+                <div class="activityComments" style="min-height: 345px;">
+                  <div class="mainColumnPadding clearfix">
+                     <p id="userNotes" class="med-text">
+                        
+                           
+                              Rolig togtur
+                           
+                           
+                        
+                     </p>
+                     <ul class="inline subText">
+                       <li class="likeActivityButton">
+                          <div id="likeBtn_1044449793" class="rkp_likeButton ">
+	  <div class="rkp_like">
+	      <div class="rkp_icon"></div>
+	      <div class="rkp_text">Like<span class="rkp_count"></span></div>
+	   </div>
+	</div> 
+	
+	<script type="text/javascript">
+		$("#likeBtn_1044449793").unbind('click');
+		$("#likeBtn_1044449793").click(function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			if (!isUserLoggedIn) {
+				RKSignUpWidget.showSignUpFancybox();
+			} else {
+				activityLike.updateLike($(this), "/like", {activityId:"1044449793", activityType: "CARDIO", uniqueId: "1044449793"});
+			}
+		})
+	</script>
+
+                        </li>
+                      </ul>
+                      <div class="likeListWrapper">
+                        
+                      </div>
+                  </div>
+                      
+   
+      <script type="text/javascript" src="https://static-web.runkeeper.com/build/14793/static/oceanus/js/comments.js"></script>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+<div class="comments empty " data-commentsboxid="1" data-postcommenturl="/comment?add=" data-deletecommenturl="/comment?delete=">
+ 
+   <div class="threadContainer clearfix">
+      <div class="expandThreadPrompt pseudoLink expanded">View all 0 comments</div>
+	      <div class="thread clearfix">
+	         
+	      </div>
+   </div>
+   
+      <div class="responseContainer clearfix" data-commentsboxid="1">
+         <div class="writeCommentPrompt">Write a comment...</div>
+
+         <div class="responseFormContainer clearfix" data-commentsboxid="1">
+         <form method="post" action="" style="margin:0;" class="clearfix">
+               <input name="parentObjectType" type="hidden" value="ACTIVITY">
+               <input name="parentObjectId" type="hidden" value="1044449793">
+               <input name="likeType" type="hidden" value="">
+            
+            <div class="comment">
+              <div class="commentsContainer clearfix">
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>window.isUserLoggedIn = "{User id=17463301 email=Optional[tutnes@gmail.com] name=Tarjei Utnes username=tutnes appLanguage=null appLanguageString=en_US numActivities=598}";</script>
+
+
+
+
+
+
+
+   <div class="avatarContainer" userid="17463301" userurl="tutnes">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>window.isUserLoggedIn = "{User id=17463301 email=Optional[tutnes@gmail.com] name=Tarjei Utnes username=tutnes appLanguage=null appLanguageString=en_US numActivities=598}";</script>
+
+
+   
+      
+      
+         
+      
+   
+   
+      
+         
+            <a href="/go?pchannel=web.avatar.elitebadge&amp;utm_source=pChannelEliteBadge" class="icon-elite small"><img src="https://static-web.runkeeper.com/build/14793/static/web/images/rk_go_yellow_small.png" border="0"></a>
+         
+         
+      
+   
+
+   
+      
+         
+      
+
+      
+         
+            <a uid="17463301" href="/user/tutnes/profile" class="avatar "><script>window.isUserLoggedIn = "{User id=17463301 email=Optional[tutnes@gmail.com] name=Tarjei Utnes username=tutnes appLanguage=null appLanguageString=en_US numActivities=598}";</script>
+<img src="https://graph.facebook.com/v2.7/822035507/picture?type=square" title="Tarjei Utnes" width="50" data-toggle="tooltip" data-container="body"></a>
+         
+         
+      
+      
+   </div>
+
+                 <div class="body clearfix">
+                       <textarea name="commentText" class="response shrunk" style="overflow: hidden;"></textarea>
+                       <button class="component ctaButton primary medium postcomment-submit" type="button">
+                          <div class="buttonText">
+                             Post Comment
+                          </div>
+                       </button>
+                 <div style="position: absolute; display: none; word-wrap: break-word; font-weight: 400; width: 320px; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; line-height: 18px; font-size: 14px; padding: 3px;">&nbsp;</div></div>
+                 
+              </div>
+           </div>
+           <div style="display: none;"><input type="hidden" name="_sourcePage" value="cf3qOxfaieCytFLBtdKTA2X5YKY_K8u_1sz5NIDxsmiyA2CCn6naVg=="><input type="hidden" name="__fp" value="tbsr_RwmUo8="></div></form>
+         </div>
+         
+      </div>
+   
+   </div>
+
+                </div>
+                <div class="activityMoreDetails">
+                
+                  
+
+                  <div id="splitsBox">
+                            <div class="mainColumnPadding clearfix">
+                              
+                              <h4>Splits</h4>
+                              
+                            </div>
+                             
+                             
+                             
+                              
+                             
+                             
+                            <div id="distanceSplits">
+                              <div class="row-fluid header">
+                                <div class="span4 labelHeader">
+                                  name
+                                </div>
+                                <div class="span4 labelHeader">
+                                  pace 
+                                </div>
+                                <div class="span4 labelHeader">
+                                  climb 
+	                            </div>
+                              </div>
+                              <div class="row-fluid" id="distanceSplitTemplate" style="display:none;">
+                                <div class="span4 number micro-text"></div>
+                                <div class="span4 pace micro-text"></div>
+                                <div class="span4 climb micro-text"></div>
+                              </div>
+                            <div class="row-fluid odd distanceSplit" id="distanceSplit_1" style="">
+                                <div class="span4 number micro-text">1 km</div>
+                                <div class="span4 pace micro-text">12:46</div>
+                                <div class="span4 climb micro-text">28</div>
+                              </div><div class="row-fluid even distanceSplit" id="distanceSplit_2" style="">
+                                <div class="span4 number micro-text">2 km</div>
+                                <div class="span4 pace micro-text">25:09</div>
+                                <div class="span4 climb micro-text">71</div>
+                              </div><div class="row-fluid odd distanceSplit" id="distanceSplit_3" style="">
+                                <div class="span4 number micro-text">3 km</div>
+                                <div class="span4 pace micro-text">30:18</div>
+                                <div class="span4 climb micro-text">206</div>
+                              </div><div class="row-fluid even distanceSplit" id="distanceSplit_4" style="">
+                                <div class="span4 number micro-text">4 km</div>
+                                <div class="span4 pace micro-text">35:42</div>
+                                <div class="span4 climb micro-text">128</div>
+                              </div><div class="row-fluid odd distanceSplit" id="distanceSplit_5" style="">
+                                <div class="span4 number micro-text">5 km</div>
+                                <div class="span4 pace micro-text">77:12</div>
+                                <div class="span4 climb micro-text">54</div>
+                              </div></div>
+                            
+                            <script type="text/javascript">
+                            activityInfoCallbacks.push(function(activityInfo)
+                            {
+                               if (activityInfo == null) return;
+
+                               // Populate splits tables if we have splits data
+                               if (activityInfo.distanceSplits)
+                               {
+                                  var distanceSplitTemplate = $("#distanceSplitTemplate");
+                                  $(".distanceSplit").remove();
+
+                                  for (var i = 0; i < activityInfo.distanceSplits.length; i++)
+                                  {
+                                     var split = activityInfo.distanceSplits[i];
+                                     distanceSplitTemplate.clone()
+                                           .attr("id", "distanceSplit_" + split.number)
+                                           .addClass(split.number % 2  == 0 ? "even" : "odd")
+                                           .addClass("distanceSplit")
+                                           .find(".number").text(split.number + ' km').end()
+                                           
+                                           
+                                           
+                                            .find(".pace").text(split.paceStr).end()
+                                           
+                                           
+                                           .find(".climb").text(split.riseStr).end()
+                                           .show()
+                                           .appendTo($("#distanceSplits"));
+                                  }
+                               }
+
+                               //Populate training splits if we have training splits data
+                               if(activityInfo.trainingSplits)
+                               {
+                                  var trainingSplitTemplate = $("#trainingSplitTemplate");
+                                  $(".trainingSplit").remove();
+
+                                  for (var i = 0; i < activityInfo.trainingSplits.length; i++)
+                                  {
+                                     var split = activityInfo.trainingSplits[i];
+                                     trainingSplitTemplate.clone()
+                                           .attr("id", "trainingSplit_" + split.number)
+                                           .addClass(split.number % 2  == 0 ? "even" : "odd")
+                                           .addClass("trainingSplit")
+                                           .find(".length").text(split.lengthStr).end()
+                                           .find(".details").text("("+split.desc+")").end()
+                                           
+                                           
+                                           
+                                            .find(".pace").text(split.paceStr).end()
+                                           
+                                           
+                                           .find(".climb").text(split.rise.toFixed(0)).end()
+                                           .show()
+                                           .appendTo($("#trainingSplits"));
+                                   }
+
+                                   $("#trainingSplitsToggle").trigger("click");
+                                }
+                                else if(activityInfo.distanceSplits)
+                                {
+                                   $("#distanceSplitsToggle").trigger("click");
+                                }
+                            });
+                            </script>
+                    
+                    
+                      </div>
+                    <div class="colDivider"></div>
+                  
+                  <div id="completedWith" class="clearfix">
+                    <div class="mainColumnPadding clearfix">
+                      <h4>Completed With:</h4>
+                      <div id="ranWithDisplayWidget" class="clearfix">
+                         
+   
+   
+   
+   
+   
+   <label class="labelHeader"></label>
+   
+   
+      
+      
+         
+      
+   
+   
+   <div id="imageTagContainer" class="imageTagContainer clearfix" style="display:none;">
+      
+      
+      
+      
+      
+   </div>
+   
+   
+   
+      
+      
+      
+         
+         
+      
+   
+   <div id="widgetEmailTitle" style="display:none;">as well as: </div>
+   
+   <div id="emailTagContainer" class="emailTagContainer clearfix" style="display:none;">
+      
+      
+   </div>
+   
+   
+   
+      
+         
+      
+      
+   
+   <p id="noTagsText" style="">
+      No one else
+   </p>
+   
+
+   
+
+                      </div>
+                  
+                     <a href="/tagging/RanWithEditFromActivity.action?tripId=1044449793" class="editActivityTagsLink"><button if="addFriendsButton" class="component ctaButton secondary small" type="button">
+                          <div class="buttonText">
+                             + Add Friends
+                          </div>
+                       </button></a>
+                     
+                     <script type="text/javascript">
+                     $(function() {
+                        // Handles ajax refresh of the tag display widget when a tag removal is done...
+                        $("#emailTagContainer .emailTag .emailTagLinkText a,#imageTagContainer .imageTag .imageTagRemove a").live('click', function(e) {
+                           e.preventDefault();
+
+                           if (!$(this).hasClass("disabled"))
+                           {
+                              // Get the username...
+                              var username = "this person";
+                              var tag = $(this).closest("div.imageTag,div.emailTag");
+                              if (tag && tag.hasClass("imageTag"))
+                              {
+                                 var tmp = tag.find("img[title]").attr("title");
+                                 if (tmp && (tmp != ""))
+                                 {
+                                    username = tmp;
+                                 }
+                                 else
+                                 {
+                                    tmp = tag.find(".imageTagAvatar[title]").attr("title");
+                                    if (tmp && (tmp != ""))
+                                    {
+                                       username = tmp;
+                                    }
+                                 }
+                              }
+                              else if (tag && tag.hasClass("emailTag"))
+                              {
+                                 var tmp = username = tag.find(".toggleTextMain").text();
+                                 if (tmp && (tmp != ""))
+                                 {
+                                    username = tmp;
+                                 }
+                              }
+
+                              var alertTitle = "Remove Tag?";
+                              var alertMessage = "Are you sure you want to remove " + username + "?";
+
+                              var href = $(this).attr("href");
+                              var linkObj = $(this);
+
+                              jAlert(alertMessage,
+                                     alertTitle,
+                                     function(result) {
+                                        if (result)
+                                        {
+                                           // Prevent double click on removal...
+                                           linkObj.addClass("disabled");
+
+                                           $.ajax({
+                                              type: 'GET',
+                                              url: href,
+                                              success: function(data) {
+                                                 tag.addClass("beingDeleted"); // for filtering...
+
+                                                 // Fade out the tag and remove it...
+                                                 tag.fadeOut(function() {
+                                                    $(this).remove();
+                                                 });
+
+                                                 var numImageTags = $("#imageTagContainer .imageTag").not(".beingDeleted").length;
+                                                 var numEmailTags = $("#emailTagContainer .emailTag").not(".beingDeleted").length;
+
+                                                 // Have both types of tags
+                                                 if ((numImageTags > 0) && (numEmailTags > 0))
+                                                 {
+                                                    $("#noTagsText").fadeOut();
+                                                    $("#widgetEmailTitle").fadeIn();
+                                                 }
+
+                                                 // Has image tags, but no email tags OR email tags, but no image tags. Either way,
+                                                 // don't want to display "as well as" text...
+                                                 else if ((numImageTags > 0) || (numEmailTags > 0))
+                                                 {
+                                                    $("#noTagsText").fadeOut();
+                                                    $("#widgetEmailTitle").fadeOut();
+                                                 }
+
+                                                 // Has no tags
+                                                 else
+                                                 {
+                                                    $("#noTagsText").fadeIn();
+                                                    $("#widgetEmailTitle").fadeOut();
+                                                 }
+                                              },
+                                              error: function() {
+                                                 rkGrowl.show("Error Removing Tag",
+                                                       "An error occurred while trying to remove tag. Please try again.",
+                                                       "error");
+
+                                                 // Allow removal again if there was an error...
+                                                 linkObj.removeClass("disabled");
+                                              }
+                                           });
+                                         }
+                              });
+                           }
+                        });
+                     });
+
+                     function reloadTagDisplay()
+                     {
+                        var displayWidget = $("#ranWithDisplayWidget");
+                        displayWidget.fadeOut(function() {
+                              displayWidget.load("/tagging/RanWithDisplay.action?tripId=1044449793", function() {
+                                 displayWidget.fadeIn();
+                              });
+                        });
+                     }
+
+                     function errorSavingTagEdits()
+                     {
+                        rkGrowl.show("Error Editing Tags",
+                              "An error occurred while editing the tags on this activity. Please try again.",
+                              "error");
+                     }
+                     </script>
+                  
+                    </div>
+                    <div class="colDivider"></div>
+                  </div>
+                  
+                    <div id="advancedOptions" class="clearfix">
+                      <div class="mainColumnPadding clearfix">
+                        <h4>Export</h4>
+                        
+                          <div id="exportOptions">
+                             <a href="/download/activity?activityId=1044449793&amp;downloadType=gpx">GPX</a>
+                             &nbsp;&nbsp;
+                             <a href="/download/activity?activityId=1044449793&amp;downloadType=googleEarth">Google Earth</a>
+                          </div>
+                        
+                      </div>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            <script type="text/javascript">
+              //resize lower columns to be equal
+              jQuery(document).ready(function(){
+                if(jQuery('#moreActivityInfo > .row-fluid > .activityComments').height()>jQuery('#moreActivityInfo > .row-fluid > .activityMoreDetails').height()){
+                  jQuery('#moreActivityInfo > .row-fluid > .activityMoreDetails').css('min-height',jQuery('#moreActivityInfo > .row-fluid > .activityComments').height());
+                } else {
+                  jQuery('#moreActivityInfo > .row-fluid > .activityComments').css('min-height',jQuery('#moreActivityInfo > .row-fluid > .activityMoreDetails').height());
+                }
+              });
+            </script>
+              
+      
+      
+
+          
+
+          
+
+          
+  
+   
+   <script type="text/javascript">
+   
+      function initFBFeedButton(feedData, media) 
+      {
+    	
+    	  // TODO: This is a temporary split between cardio and strength training activities because strength training activities are still
+    	  // using the old Facebook posting infrastructure.
+    	  
+    	 
+	 		
+    	 	  
+    	 	
+    	 	
+         		$("#fbfeedButton").click(function() 
+         		{
+        			jAlert("Are you sure you want to share this activity to Facebook?", "Share to Facebook", function(response)
+            		{
+            			if(response == true)
+            			{
+        					$.post('/ajax/manualFacebookShare',
+        			   			   {activityId: 1044449793,
+        							_eventName: "shareActivityCompletion"},
+        			   				function(response)
+        			   				{
+        								rkGrowl.show("Activity successfully shared.", "", "success");
+        			   				});
+            			}
+            		});
+         		});
+        			
+         	
+         
+            
+         	
+		 
+		 
+		 	
+         logEvent("SHARE", "ACTIVITY_CARDIO", "1044449793", {SOCIAL_NETWORK:"fb"});
+      }
+         
+      $(function() {
+         $("#tweetButton").click(function() {
+            var tweetText = 'Just posted a 4.27 km walk - Rolig togtur  #Runkeeper';
+            var shareUrl = "https://twitter.com/intent/tweet?url=http%3A%2F%2Frnkpr.com%2Fah9u6m9&text=" + escape(tweetText);
+            window.open(shareUrl, "_blank");
+            
+            logEvent("SHARE", "ACTIVITY_CARDIO", "1044449793", {SOCIAL_NETWORK:"t"});
+         });
+      });
+   </script>
+
+                           
+          <script type="text/javascript">
+            $(document).ready(function(){
+              initFBFeedButton();
+            });
+          </script>
+
+      
+    
+       
+      
+   
+   
+         <script type="text/javascript">
+            _gaq.push(['_trackEvent', 'User Pages', 'View Self', 'activities']);
+         </script>
+      
+						</div>

@@ -164,9 +164,9 @@ body .demo-blog {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-.demo-blog .on-the-road-again .mdl-card__media {
+/*.demo-blog .on-the-road-again .mdl-card__media {
   background-image: url('images/road.jpg');
-}
+}*/
 .demo-blog .shopping .mdl-card__media {
   background-image: url('images/shopping.jpg');
 }
@@ -219,7 +219,7 @@ body .demo-blog {
   background-color: transparent;
 }
 .demo-blog--blogpost .demo-blog__posts > .mdl-card .mdl-card__media {
-  background-image: url('images/road_big.jpg');
+  background-image: url('images/kyrkja08282017/kyrkja01.jpg');
   height: 280px;
 }
 .demo-blog--blogpost .comments {
