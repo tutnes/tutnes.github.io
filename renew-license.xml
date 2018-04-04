@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+#____________________________________________________________________
+# Dynatrace License Certificate: 302661
+# Copyright (C) Dynatrace LLC 2015
+# 
+# Delivered: 23-Oct-2017 09:42:21
+# For      : 722378-60009-9
+#          : EVRY AS (Managed Service Provider)
+# End User : 2017 - EVRY Data Centers / TERM 01APR17-31MAR18
+# CLTD ID  : Carole Ducreux
+#____________________________________________________________________
+# 
+# Thank you for your purchase/trial of the following 
+# Dynatrace products:
+#
+#      Dynatrace Data Center RUM Oracle Application Analysis 17.00
+#      Dynatrace Data Center RUM Siebel Analysis 17.00
+#      Dynatrace Data Center RUM SSL 17.00
+#      Dynatrace Data Center RUM Thin Client -Citrix -Win Terminal Svr 17.00
+#      Dynatrace Data Center RUM CAS cluster 17.00
+#      Dynatrace Data Center RUM Oracle 17.00
+#      Dynatrace Data Center RUM Sybase -MS SQL 17.00
+#      Dynatrace Data Center RUM DNS 17.00
+#      Dynatrace Data Center RUM Enterprise 17.00
+#      Dynatrace Data Center RUM End User Experience 17.00
+#      Dynatrace Data Center RUM CAS option Generic TCP 17.00
+#      Dynatrace Data Center RUM CAS option Generic TCP w Transactions 17.00
+#      Dynatrace Data Center RUM CAS option Kerberos 17.00
+#      Dynatrace Data Center RUM CAS option - LDAP 17.00
+#      Dynatrace Data Center RUM Lightweight HTTP 17.00
+#      Dynatrace Data Center RUM Mail 17.00
+#      Dynatrace Data Center RUM MS RPC 17.00
+#      Dynatrace Data Center RUM Monitored Servers 17.00
+#      Dynatrace Data Center RUM CAS option SMB 17.00
+#      Dynatrace Data Center RUM CAS option VoIP 17.00
+#      Dynatrace Data Center RUM VPN 17.00
+#      Dynatrace Data Center RUM Web 17.00
+#      Dynatrace Data Center RUM XML/SOAP TRANSACTION 17.00
+#      Advanced Web Diagnostics Server 17.00
+#      Dynatrace Data Center RUM ADS cluster 17.00
+#      Dynatrace Data Center RUM VFC 17.00
+#      Enterprise Synthetic 12.05
+#      Enterprise Synthetic Transactions 12.05
+#      Synthetic Monitoring Recorder (Developer) 12.05
+#      Synthetic Monitoring Recorder (Runtime) 12.05
+#      Dynatrace Data Center RUM Oracle Forms 17.00
+#      Dynatrace Data Center RUM MySQL analysis option 17.00
+# 
+# If you have any questions regarding your license, please contact
+# Worldwide License Management by opening a licensing ticket at
+# https://support.dynatrace.com/supportportal .
+# For International and European customers, please contact your local
+# Dynatrace subsidiary or distributor.
+#
+#____________________________________________________________________
+# -->
+
+
+<license>
+  <customer_id>722378-60009-9</customer_id>
+  <key protected='F6416B137A21771245984267FBCE2A73AA5B880DE846E2F659F7D60DF44AF29EC6518DC97525241A' >
+    <App>AM_OracleApplications</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FE4468647F220C1B32E53761FBCC2E74AC2AF40AEE3794F35986D809F036809AC527FDB271252619' >
+    <App>AM_Siebel</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FB461A140955001D309E411489BB5974DD258B7BE531E0862DF4D7778039FCEFC227FEB47656276E' >
+    <App>AM_SSL_Decryption</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8D3466620850066E33E5411B8BCD2971DF5FFD09E437ED835E83A77A843CF1EEC2258AC10155526A' >
+    <App>VAS_Citrix</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FF426E1509560C1C47E44611FCBE587CD82BFD7DED44E48150F0D07DF33CF799C2568DC305525615' >
+    <App>VAS_CLUSTER_CAS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;6</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8E336C157E55031937EF451A88CD2F75AB5F880FE84B96845180A27887398699B926FFC80756256A' >
+    <App>VAS_DB_Oracle</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FE4069627C50741D47E53712FCBE2871D15EF47AE933908D2981D40C8338F5EAB65588B20753231C' >
+    <App>VAS_DB_TDS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FA416B6F0C26741B349E4062FDBC2977D0598E08EE44ED822AF7D67D803A82E8B82AFDB40F21226A' >
+    <App>VAS_DNS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FD3467647C53021837EF48618DC85C70AA59887D9E40E0875C8ED20A83398198B7568BB202245568' >
+    <App>VAS_Enterprise</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8B4068107C550C1C45EA3217FDBB2E05D82DFF7EE44BE2815A8EA07BF548F49FC256FFB47158296E' >
+    <App>VAS_EUE</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8D3367647E51041945EB37108ACD5F73AD29880BE53090F75E82A209833C81EFB22BF8B60022246E' >
+    <App>VAS_GENERIC</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8C321D6372200C1B42E845128ABA2972AF588F089830E5822DF3D378F239F59AB256F6C97158546E' >
+    <App>VAS_GENERIC_TRANS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FB321A677E57711F37E4421A81CD2E00AC2FF579EC4294852A85A309F73AF19AB556FCC90223226D' >
+    <App>VAS_KERBEROS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FB446E610E50046D37EF421B8FCD2D71DE25FA7BEF4491F32AF2D50A8739F1EDB850F6C20726521C' >
+    <App>VAS_LDAP</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FA346B157E5476684FEE421B80BB5C00DF2BFE08E44AE7805084D777F63AF7ECC22B8FC472252519' >
+    <App>VAS_LTHTTP</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FD446963725B70694E9E4113F8C05570DF2BF47AE937EDF05D81D478843EF0E9B22B8BC203555268' >
+    <App>VAS_Mail</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='F84E6E617926776947EB356188BB5D01AA5EFC009F3394F12D81D27B823EF29DB62388B60E55561B' >
+    <App>VAS_RPC</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FD4467107926066E42E9426089CE5871AF25FA7CEA43E7815C82D67BFF3FFC9EC420FCB201565669' >
+    <App>VAS_SERVER_LIMIT</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='F8356960085A051A3498471BFCC95900A858F97EEF44E58D5983D07C833AF29AC42AF8C074562318' >
+    <App>VAS_SMB</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='F7471C6E09530D1F33EF3312FCCA5972D92B887DEF4A91805D86A40E833D819AB626FBC50523231D' >
+    <App>VAS_VOIP</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='F84E6A100C20011F34ED4016FFC85D7DAC2EF479E84094815B86A40E803E86E8C2268DC60752511F' >
+    <App>VAS_VPN</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8A356E137C5A766F33ED4214FDBB5D01AA2A8E7DE444EC875F8ED9098348879FC32BFCB47458526A' >
+    <App>VAS_Web</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FA336A177957711B45984962FFC85F07DC2EFE019F33E6802D8FA277F73B869FC626FCC20550241A' >
+    <App>VAS_XML</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FA3719170E5B0C6D40E834148BCA2874D82EFB0EED41E2842CF4D67CF03B80ECC32AFEB474582914' >
+    <App>AWDS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='F7341E6272260D68349A4767FCC15A74D024FB7C9F4697852C81D509853BF7EFB52B8FB40054566E' >
+    <App>VAS_CLUSTER_ADS</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;1</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FE3268147F54016930994417F8CA5D75D825F57CEA4B94F45C8FD379F338FCEBB120FDC67124216D' >
+    <App>AMD_VFC</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;13</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8A426E6F09210D1C47E53760FFCB5976DF28F90B9D31E6845A85A07FF63CF798B6558DB375555569' >
+    <App>ClientVantage</App>
+    <Vers>12.05</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='FF401B667A25031E42EC4716FBCE5E05DB5C8B0DEB4196835E85D978FF36F5ECC524F7B271245614' >
+    <App>ClientVantage_Trans</App>
+    <Vers>12.05</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0-50</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='F7446A657A22051A45EE476189CE2A77DF59F400ED4393F02D82D276F44C8698B72BFFC976215314' >
+    <App>Recorder_SMPE_Developer</App>
+    <Vers>12.05</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8E3369100926026E41EC3266FFC85C72AA5E8E0DE933EDF62982A778F24B81ECC424FAC502222019' >
+    <App>Recorder_SMPE_Runtime</App>
+    <Vers>12.05</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8A411D140C20061A44E845118CCE2E7CDF5BF5009E30E4855181D70BF648F0E3C522FDB274215369' >
+    <App>VAS_OracleForms</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+  <key protected='8D306C177C5A041C379840608DC82F71AD5C897AE940E0865DF4D277803DF4E8C126F7B400575569' >
+    <App>VAS_MySQL</App>
+    <Vers>17.00</Vers>
+    <Start>29-Mar-2017</Start>
+    <End>22-Jan-2018</End>
+    <Parameters>722378-60009-9;0;TRIAL;0</Parameters>
+    <Hostid>undefined</Hostid>
+  </key>
+</license>
